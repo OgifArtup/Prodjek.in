@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="css/style_login.css">
+    <title>Main Page</title>
+    <link rel="stylesheet" href="css/style_main.css">
 </head>
 <body>
     <section class="header">
@@ -28,26 +28,10 @@
             <div class="gambar">
                 <img src="assets/illustration.png">
             </div>
-            <div class="loginform">
-                <h1>Welcome</h1>
-                <div class="form">
-                    <div class="login_3rd_party">
-                        <input type="submit" class="submit-google" value="Login with Google" >
-                    </div>
-                    <br>
-                    <p>- OR -</p>
-                    <br>
-                    <div class="input-field">
-                        <input type="text" class="input" id="email" placeholder="Email">
-                    </div>
-                    <div class="input-field">
-                        <input type="password" class="input" id="email" placeholder="Password">
-                    </div>
-                    <br>
-                    <div class="input-field">
-                        <input type="submit" class="submit" value="Login Now">
-                    </div>
-                </div>
+            <div class="tulisan">
+                <h1>Prodjek.in</h1></br>
+                <p>Lorem ipsum dolor sit amet consectetur. Odio varius arcu id gravida ut feugiat et vestibulum. Duis proin nec enim consequat faucibus. Suscipit tincidunt at turpis varius suspendisse porttitor cursus ut. Ornare quisque euismod et egestas.</p></br>
+                <a href="/login">Login Now</a>
             </div>
         </div>
     </section>
