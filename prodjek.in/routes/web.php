@@ -20,3 +20,8 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('login');
 });
+
+// Route::get('create', 'FirebaseController@set');
+// Route::get('read', 'FirebaseController@read');
+// Route::get('update', 'FirebaseController@update');
+// Route::get('delete', 'FirebaseController@delete');

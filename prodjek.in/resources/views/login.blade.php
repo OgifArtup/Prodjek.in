@@ -28,27 +28,29 @@
             <div class="gambar">
                 <img src="assets/illustration.png">
             </div>
-            <div class="loginform">
-                <h1>Welcome</h1>
-                <div class="form">
-                    <div class="login_3rd_party">
-                        <input type="submit" class="submit-google" value="Login with Google" >
-                    </div>
-                    <br>
-                    <p>- OR -</p>
-                    <br>
-                    <div class="input-field">
-                        <input type="text" class="input" id="email" placeholder="Email">
-                    </div>
-                    <div class="input-field">
-                        <input type="password" class="input" id="email" placeholder="Password">
-                    </div>
-                    <br>
-                    <div class="input-field">
-                        <input type="submit" class="submit" value="Login Now">
+            <form action="/login-user" method="POST" enctype="multipart/form-data">@csrf
+                <div class="loginform">
+                    <h1>Welcome</h1>
+                    <div class="form">
+                        <div class="login_3rd_party">
+                            <input type="submit" class="submit-google" value="Login with Google" >
+                        </div>
+                        <br>
+                        <p>- OR -</p>
+                        <br>
+                        <div class="input-field">
+                            <input type="text" class="input" id="email" placeholder="Email">
+                        </div>
+                        <div class="input-field">
+                            <input type="password" class="input" id="email" placeholder="Password">
+                        </div>
+                        <br>
+                        <div class="input-field">
+                            <input type="submit" class="submit" value="Login Now">
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </section>
 </body>
