@@ -156,3 +156,11 @@ color :#1c33aa;
     font-family: "Poppins";
     font-weight: 400;
 }
+
+.submit:hover{
+    cursor: pointer;
+}
+
+.submit-google:hover{
+    cursor: pointer;
+}

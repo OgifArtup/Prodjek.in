@@ -5,6 +5,7 @@
     font-family: "Poppins";
 }
 
+/* NavBar */
 ul {
     list-style-type: none;
     margin: 0;
@@ -18,6 +19,7 @@ ul {
 }
 
 li h1 {
+    display:flex;
     font-size: 30px;
     color: white;
     padding-top: 30px;
@@ -25,10 +27,10 @@ li h1 {
 }
 
 li h1 img {
-    padding-left: 10px;
-    padding-right: 10px;
-    height: 30px;
-    width: 30px;
+    padding-left: 40px;
+    padding-right: 20px;
+    height: 40px;
+    width: 40px;
 }
 
 li img {
@@ -62,11 +64,18 @@ li b{
     padding: 8px 16px;
     text-decoration: none;
     font-size: 25px;
-    margin-top: 350px;
-    margin-bottom: 15px;
+    /* margin-top: 350px; */
+    /* margin-bottom: 15px; */
     font-weight: normal;
 }
 
+.ul2{
+    margin-top: 28%;
+}
+
+/* NavBar End */
+
+/* Hero */
 div {
     width: 84%;
     float: right;
@@ -157,3 +166,5 @@ div h1 {
     height: 30px;
     top: 30px;
 }
+
+/* Hero End*/
