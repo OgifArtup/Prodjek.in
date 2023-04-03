@@ -77,3 +77,45 @@ div h1 {
     padding: 2%;
     font: 36px;
 }
+
+.container{
+    padding: 1%;
+}
+
+.box1{
+    width: 29%;
+    height: 29%;
+    display: flexbox;
+    box-shadow: 15px 15px 15px rgba(0,0,0,0.2);
+    justify-content: center;
+    align-items: center;
+    padding: 1%;
+    margin-left: 2%;
+    margin-bottom: 10px;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.box1 h2{
+    text-align: center;
+}
+
+.bold{
+    font-weight: 800;
+}
+
+.task{
+    width: 75%;
+    display: inline-block;
+}
+
+.task_num{
+    width: 8%;
+    display: inline-block;
+    color: red;
+}
+
+.task_T{
+    width: 17%;
+    display: inline-block;
+}
