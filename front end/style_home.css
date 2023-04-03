@@ -9,11 +9,12 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    width: 15%;
+    width: 16%;
     background-color: #5571FE;
     position: fixed;
     height: 100%;
     overflow: auto;
+    float: left;
 }
 
 li h1 {
@@ -67,5 +68,92 @@ li b{
 }
 
 div {
-    margin-left: 16%;
+    width: 84%;
+    float: right;
+    background-color: #daddea;
+}
+
+div h1 {
+    padding: 2%;
+    font: 36px;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    margin-bottom: 4%;
+}
+
+.card {
+    width: 50%;
+    height: 20%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    background-color: white;
+    border-radius: 25px;
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: left;
+}
+
+.card h3 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.card h4 {
+    font-size: 64px;
+    font-weight: bolder;
+    padding-top: 4%;
+    padding-bottom: 4%;
+}
+
+.card p {
+    font-size: 15px;
+    font-weight: light;
+}
+
+.notif-container {
+    width: 100%;
+    height: 100%;
+}
+
+.notif {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: left;
+    border-radius: 25px;
+    background-color: white;
+    margin-bottom: 2%;
+}
+
+.notif h1 {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 0;
+}
+
+.notif h2 {
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.notif h3 {
+    font-size: 18px;
+    font-weight: lighter;
+}
+
+.notif-img {
+    width: 0;
+}
+
+.notif-img img {
+    float: right;
+    width: 30px;
+    height: 30px;
+    top: 30px;
 }
