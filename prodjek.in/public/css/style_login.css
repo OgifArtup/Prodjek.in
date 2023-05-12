@@ -12,7 +12,7 @@ body{
 .header{
     min-height: 100vh;
     width: 100%;
-    background-image: url(../assets/wbg.png);
+    background-image: url(assets/wbg.png);
     background-position: center;
     background-size: cover;
     position: relative;
@@ -155,4 +155,12 @@ color :#1c33aa;
     font-size: 18px;
     font-family: "Poppins";
     font-weight: 400;
+}
+
+.submit:hover{
+    cursor: pointer;
+}
+
+.submit-google:hover{
+    cursor: pointer;
 }

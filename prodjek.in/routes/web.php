@@ -21,7 +21,14 @@ Route::get('/login', function () {
     return view('login');
 });
 
-// Route::get('create', 'FirebaseController@set');
-// Route::get('read', 'FirebaseController@read');
-// Route::get('update', 'FirebaseController@update');
-// Route::get('delete', 'FirebaseController@delete');
+Route::get('/home', function () {
+    return view('home');
+});
+
+Route::get('/project-details', function () {
+    return view('detail_prodjek');
+});
+
+Route::get('/project-list', function () {
+    return view('projek_list');
+});
