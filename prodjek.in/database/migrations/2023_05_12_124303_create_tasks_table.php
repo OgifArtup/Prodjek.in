@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::table('tasks', function (Blueprint $table) {
             $table->foreign('workSpaceID')->references('id')->on('workspaces');
-            $table->foreign('assignListID')->references('id')->on('assignment_list');
         });
     }
 

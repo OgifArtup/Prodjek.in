@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('Description');
             $table->date('DueDate');
             $table->string('Priority');
-            $table->unsignedBigInteger('assignListID');
         });
     }
 
