@@ -25,7 +25,7 @@ class WorkspaceController extends Controller
             // isi user_id ganti sama Auth::user()->id,
             'user_id' => '1',
             'workspace_id' => $workspace->id,
-            'role' => 'admin',
+            'role' => 'Manager',
         ]);
 
         return back();
