@@ -82,7 +82,7 @@
       </div>
 
       @foreach ($projects as $project)
-      <a href="#">
+      <a href="/project-details">
         <div class="box1">
           <h2>{{ $project->workspace->name }}</h2>
           <p class="task">Team</p>

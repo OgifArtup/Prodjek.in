@@ -32,4 +32,15 @@ class WorkspaceController extends Controller
 
         return back();
     }
+
+    public function viewDetails($id){
+        $workspace = Workspace::find($id);
+        // Ganti '1' sama Auth::user()->id
+        $list = WorkspaceList::where('user_id', '1')->where('workspace_id', $id)->get();
+        // if($list->user_id != Auth::user()->id){
+        //     return redirect(route('projek_list'));
+        // }
+        if(is_null($workspace) or is_null($list)) return back();
+        return view('detail_prodjek', compact('workspace', 'list'));
+    }
 }
