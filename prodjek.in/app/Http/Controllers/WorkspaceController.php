@@ -19,6 +19,8 @@ class WorkspaceController extends Controller
     public function createProject(WorkspaceRequest $request){
         $workspace = Workspace::create([
             'name' => $request->name,
+            'team_name' => $request->team_name,
+            'project_detail' => $request->project_detail,
         ]);
 
         WorkspaceList::create([

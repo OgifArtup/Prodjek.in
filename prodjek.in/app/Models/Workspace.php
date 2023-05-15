@@ -14,6 +14,8 @@ class Workspace extends Model
 
     protected $fillable = [
         'name',
+        'team_name',
+        'project_detail',
     ];
 
     public function task(){

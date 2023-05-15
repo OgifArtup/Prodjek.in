@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2023 at 09:37 AM
+-- Generation Time: May 15, 2023 at 12:48 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -118,7 +118,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `google_id`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Test User', 'TestUser1', 'test@gmail.com', '123456789012345678901', NULL, '$2y$10$fExMhODuFiLoJa/g8JgOJumMvF1YCbjTuELLWrAMDyxdBzD.ADvJm', NULL, '2023-05-15 00:29:43', '2023-05-15 00:29:43');
+(1, 'Test User', 'TestUser1', 'test@gmail.com', '123456789012345678901', NULL, '$2y$10$z7T9jiVaO4nfypGnFaytS.MfaveY8EbuEYRZ0J4UR35peHmDBtnvO', NULL, '2023-05-15 03:06:30', '2023-05-15 03:06:30');
 
 -- --------------------------------------------------------
 
@@ -128,18 +128,18 @@ INSERT INTO `users` (`id`, `name`, `username`, `email`, `google_id`, `email_veri
 
 CREATE TABLE `workspaces` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL
+  `name` varchar(255) NOT NULL,
+  `team_name` varchar(255) NOT NULL,
+  `project_detail` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `workspaces`
 --
 
-INSERT INTO `workspaces` (`id`, `name`) VALUES
-(2, 'asdf'),
-(3, 'test2'),
-(4, 'test3'),
-(5, 'test4');
+INSERT INTO `workspaces` (`id`, `name`, `team_name`, `project_detail`) VALUES
+(1, 'Manhattan', 'Project Scientist', 'A research and development project to make something useful'),
+(2, 'Project In', 'Kelompok 11', 'To make a new project management');
 
 -- --------------------------------------------------------
 
@@ -159,10 +159,8 @@ CREATE TABLE `workspace_lists` (
 --
 
 INSERT INTO `workspace_lists` (`id`, `user_id`, `workspace_id`, `role`) VALUES
-(2, 1, 2, 'admin'),
-(3, 1, 3, 'admin'),
-(4, 1, 4, 'admin'),
-(5, 1, 5, 'admin');
+(1, 1, 1, 'Manager'),
+(2, 1, 2, 'Manager');
 
 --
 -- Indexes for dumped tables
@@ -257,13 +255,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `workspaces`
 --
 ALTER TABLE `workspaces`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `workspace_lists`
 --
 ALTER TABLE `workspace_lists`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

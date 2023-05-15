@@ -22,7 +22,9 @@ class WorkspaceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|min:2|max:100',
+            'name' => 'required|string|min:2|max:30',
+            'team_name' => 'required|string|min:2|max:30',
+            'project_detail' => 'required|string|min:10|max:150',
         ];
     }
 }

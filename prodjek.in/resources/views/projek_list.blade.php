@@ -46,23 +46,39 @@
       <!-- Minta tolong dibenerin sizing nya (figo) -->
       <div class="boxadd">
         <h2>Add New Project</h2>
-          <form action="{{ route('createProject') }}" method="POST" enctype="multipart/form-data" class="m-5">
-            @csrf
-            <div class="form-row mb-1">
-                <div class="p-2">
-                    <input name="name" type="text" class="form-control" id="formGroupExampleInput" placeholder="Project Name" value="{{ old('name') }}">
-                    @error('name')
-                        <div class="text-danger">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
-            </div>
-  
-          <div class="form-row mb-4 d-grid p-2">
-                <button type="submit" class="btn btn-primary">Add Project</button>
-            </div>
-          </form>
+        <form action="{{ route('createProject') }}" method="POST" enctype="multipart/form-data" class="m-5">
+          @csrf
+          <div class="">
+              <input name="name" type="text" class="form-control" id="formGroupExampleInput" placeholder="Project Name" value="{{ old('name') }}">
+              @error('name')
+                  <div class="text-danger">
+                      {{ $message }}
+                  </div>
+              @enderror
+          </div>
+          
+          <div class="p-2">
+              <input name="team_name" type="text" class="form-control" id="formGroupExampleInput" placeholder="Team Name" value="{{ old('team_name') }}">
+              @error('team_name')
+                  <div class="text-danger">
+                      {{ $message }}
+                  </div>
+              @enderror
+          </div>
+
+          <div class="">
+              <input name="project_detail" type="text" class="form-control" id="formGroupExampleInput" placeholder="Project Detail" value="{{ old('project_detail') }}">
+              @error('project_detail')
+                  <div class="text-danger">
+                      {{ $message }}
+                  </div>
+              @enderror
+          </div>
+
+        <div class="form-row mb-4 d-grid p-2">
+              <button type="submit" class="btn btn-primary">Add Project</button>
+          </div>
+        </form>
       </div>
 
       @foreach ($projects as $project)
@@ -72,11 +88,11 @@
           <p class="task">Team</p>
           <p class="task_num">80</p>
           <p class="task_T">Tasks</p>
-          <p class="bold"><br />Pandawa Group</p>
+          <p class="bold"><br />{{ $project->workspace->team_name }}</p>
           <p><br />Role</p>
-          <p class="bold"><br />Manager</p>
+          <p class="bold"><br />{{ $project->role }}</p>
           <p><br />Detail</p>
-          <p class="bold"><br />Comprov Prodject.In</p>
+          <p class="bold"><br />{{ $project->workspace->project_detail }}</p>
         </div>
       </a>
       @endforeach
