@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('workspaces', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('ListID');
-            $table->string('Name');
+            $table->string('name');
         });
     }
 

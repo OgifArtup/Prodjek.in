@@ -10,10 +10,10 @@ use App\Models\WorkspaceList;
 class Workspace extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 
     protected $fillable = [
-        'ListID',
-        'Name',
+        'name',
     ];
 
     public function task(){
@@ -21,6 +21,6 @@ class Workspace extends Model
     }
 
     public function workspaceList(){
-        return $this->belongsTo(WorkspaceList::class, 'ListID');
+        return $this->hasMany(WorkspaceList::class, 'id');
     }
 }

@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('workspace_list', function (Blueprint $table) {
-            $table->foreign('userID')->references('id')->on('users');
-            $table->foreign('workSpaceID')->references('id')->on('workspaces');
+        Schema::table('workspace_lists', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('workspace_id')->references('id')->on('workspaces');
         });
     }
 

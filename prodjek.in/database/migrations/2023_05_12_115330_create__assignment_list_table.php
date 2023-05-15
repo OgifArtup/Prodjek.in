@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('assignment_list', function (Blueprint $table) {
+        Schema::create('assignment_lists', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('userID');
-            $table->unsignedBigInteger('taskID');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('task_id');
         });
     }
 

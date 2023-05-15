@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('workspace_list', function (Blueprint $table) {
+        Schema::create('workspace_lists', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('userID');
-            $table->unsignedBigInteger('workSpaceID');
-            $table->string('Role');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('workspace_id');
+            $table->string('role');
         });
     }
 

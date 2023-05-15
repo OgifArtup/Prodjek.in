@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2023 at 02:05 PM
+-- Generation Time: May 15, 2023 at 09:37 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -24,13 +24,13 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `assignment_list`
+-- Table structure for table `assignment_lists`
 --
 
-CREATE TABLE `assignment_list` (
+CREATE TABLE `assignment_lists` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `userID` bigint(20) UNSIGNED NOT NULL,
-  `taskID` bigint(20) UNSIGNED NOT NULL
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `task_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -57,9 +57,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (5, '2023_05_12_114728_create_tasks_table', 1),
 (6, '2023_05_12_115330_create__assignment_list_table', 1),
 (7, '2023_05_12_124248_create__workspace_list_table', 1),
-(8, '2023_05_12_124257_create_workspaces_table', 1),
-(9, '2023_05_12_124303_create_tasks_table', 1),
-(10, '2023_05_12_124313_create__assignment_list_table', 1);
+(8, '2023_05_12_124303_create_tasks_table', 1),
+(9, '2023_05_12_124313_create__assignment_list_table', 1);
 
 -- --------------------------------------------------------
 
@@ -88,11 +87,11 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `tasks` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `workSpaceID` bigint(20) UNSIGNED NOT NULL,
-  `Name` varchar(255) NOT NULL,
-  `Description` varchar(255) NOT NULL,
-  `DueDate` date NOT NULL,
-  `Priority` varchar(255) NOT NULL
+  `workspace_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `due_date` date NOT NULL,
+  `priority` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -114,6 +113,13 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `username`, `email`, `google_id`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Test User', 'TestUser1', 'test@gmail.com', '123456789012345678901', NULL, '$2y$10$fExMhODuFiLoJa/g8JgOJumMvF1YCbjTuELLWrAMDyxdBzD.ADvJm', NULL, '2023-05-15 00:29:43', '2023-05-15 00:29:43');
+
 -- --------------------------------------------------------
 
 --
@@ -122,34 +128,53 @@ CREATE TABLE `users` (
 
 CREATE TABLE `workspaces` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `ListID` bigint(20) UNSIGNED NOT NULL,
-  `Name` varchar(255) NOT NULL
+  `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `workspaces`
+--
+
+INSERT INTO `workspaces` (`id`, `name`) VALUES
+(2, 'asdf'),
+(3, 'test2'),
+(4, 'test3'),
+(5, 'test4');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `workspace_list`
+-- Table structure for table `workspace_lists`
 --
 
-CREATE TABLE `workspace_list` (
+CREATE TABLE `workspace_lists` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `userID` bigint(20) UNSIGNED NOT NULL,
-  `workSpaceID` bigint(20) UNSIGNED NOT NULL,
-  `Role` varchar(255) NOT NULL
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `workspace_id` bigint(20) UNSIGNED NOT NULL,
+  `role` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `workspace_lists`
+--
+
+INSERT INTO `workspace_lists` (`id`, `user_id`, `workspace_id`, `role`) VALUES
+(2, 1, 2, 'admin'),
+(3, 1, 3, 'admin'),
+(4, 1, 4, 'admin'),
+(5, 1, 5, 'admin');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `assignment_list`
+-- Indexes for table `assignment_lists`
 --
-ALTER TABLE `assignment_list`
+ALTER TABLE `assignment_lists`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `assignment_list_userid_foreign` (`userID`),
-  ADD KEY `assignment_list_taskid_foreign` (`taskID`);
+  ADD KEY `assignment_lists_user_id_foreign` (`user_id`),
+  ADD KEY `assignment_lists_task_id_foreign` (`task_id`);
 
 --
 -- Indexes for table `migrations`
@@ -170,7 +195,7 @@ ALTER TABLE `personal_access_tokens`
 --
 ALTER TABLE `tasks`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `tasks_workspaceid_foreign` (`workSpaceID`);
+  ADD KEY `tasks_workspace_id_foreign` (`workspace_id`);
 
 --
 -- Indexes for table `users`
@@ -184,32 +209,31 @@ ALTER TABLE `users`
 -- Indexes for table `workspaces`
 --
 ALTER TABLE `workspaces`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `workspaces_listid_foreign` (`ListID`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `workspace_list`
+-- Indexes for table `workspace_lists`
 --
-ALTER TABLE `workspace_list`
+ALTER TABLE `workspace_lists`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `workspace_list_userid_foreign` (`userID`),
-  ADD KEY `workspace_list_workspaceid_foreign` (`workSpaceID`);
+  ADD KEY `workspace_lists_user_id_foreign` (`user_id`),
+  ADD KEY `workspace_lists_workspace_id_foreign` (`workspace_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `assignment_list`
+-- AUTO_INCREMENT for table `assignment_lists`
 --
-ALTER TABLE `assignment_list`
+ALTER TABLE `assignment_lists`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -227,49 +251,43 @@ ALTER TABLE `tasks`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `workspaces`
 --
 ALTER TABLE `workspaces`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `workspace_list`
+-- AUTO_INCREMENT for table `workspace_lists`
 --
-ALTER TABLE `workspace_list`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `workspace_lists`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `assignment_list`
+-- Constraints for table `assignment_lists`
 --
-ALTER TABLE `assignment_list`
-  ADD CONSTRAINT `assignment_list_taskid_foreign` FOREIGN KEY (`taskID`) REFERENCES `tasks` (`id`),
-  ADD CONSTRAINT `assignment_list_userid_foreign` FOREIGN KEY (`userID`) REFERENCES `users` (`id`);
+ALTER TABLE `assignment_lists`
+  ADD CONSTRAINT `assignment_lists_task_id_foreign` FOREIGN KEY (`task_id`) REFERENCES `tasks` (`id`),
+  ADD CONSTRAINT `assignment_lists_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `tasks`
 --
 ALTER TABLE `tasks`
-  ADD CONSTRAINT `tasks_workspaceid_foreign` FOREIGN KEY (`workSpaceID`) REFERENCES `workspaces` (`id`);
+  ADD CONSTRAINT `tasks_workspace_id_foreign` FOREIGN KEY (`workspace_id`) REFERENCES `workspaces` (`id`);
 
 --
--- Constraints for table `workspaces`
+-- Constraints for table `workspace_lists`
 --
-ALTER TABLE `workspaces`
-  ADD CONSTRAINT `workspaces_listid_foreign` FOREIGN KEY (`ListID`) REFERENCES `workspace_list` (`id`);
-
---
--- Constraints for table `workspace_list`
---
-ALTER TABLE `workspace_list`
-  ADD CONSTRAINT `workspace_list_userid_foreign` FOREIGN KEY (`userID`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `workspace_list_workspaceid_foreign` FOREIGN KEY (`workSpaceID`) REFERENCES `workspaces` (`id`);
+ALTER TABLE `workspace_lists`
+  ADD CONSTRAINT `workspace_lists_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `workspace_lists_workspace_id_foreign` FOREIGN KEY (`workspace_id`) REFERENCES `workspaces` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

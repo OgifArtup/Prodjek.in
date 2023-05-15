@@ -111,6 +111,17 @@ div h1 {
     text-align: center;
 }
 
+.boxadd{
+    width: 29%;
+    box-shadow: 15px 15px 15px rgba(0,0,0,0.2);
+    padding: 1%;
+    margin-left: 2%;
+    margin-bottom: 10px;
+    background-color: #4caf51;
+    border-radius: 15px;
+    text-align: center;
+}
+
 .bold{
     font-weight: 800;
 }

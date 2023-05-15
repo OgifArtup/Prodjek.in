@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WorkspaceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,5 @@ Route::get('/project-details', function () {
     return view('detail_prodjek');
 });
 
-Route::get('/project-list', function () {
-    return view('projek_list');
-});
+Route::get('/project-list', [WorkspaceController::class, 'viewProjects'])->name('viewProjects');
+Route::post('/add-project', [WorkspaceController::class, 'createProject'])->name('createProject');

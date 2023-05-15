@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('assignment_list', function (Blueprint $table) {
-            $table->foreign('userID')->references('id')->on('users');
-            $table->foreign('taskID')->references('id')->on('tasks');
+        Schema::table('assignment_lists', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('task_id')->references('id')->on('tasks');
         });
     }
 

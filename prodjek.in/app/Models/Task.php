@@ -12,11 +12,11 @@ class Task extends Model
     use HasFactory;
 
     protected $fillable = [
-        'Name',
-        'Description',
-        'workSpaceID',
-        'DueDate',
-        'Priority',
+        'name',
+        'description',
+        'workspace_id',
+        'due_date',
+        'priority',
     ];
 
     public function assignment(){
@@ -24,6 +24,6 @@ class Task extends Model
     }
 
     public function workspace(){
-        return $this->belongsTo(Workspace::class, 'workSpaceID');
+        return $this->belongsTo(Workspace::class, 'workspace_id');
     }
 }

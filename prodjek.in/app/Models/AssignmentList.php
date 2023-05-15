@@ -11,11 +11,11 @@ class AssignmentList extends Model
     use HasFactory;
 
     protected $fillable = [
-        'userID',
-        'taskID',
+        'user_id',
+        'task_id',
     ];
 
     public function task(){
-        return $this->belongsTo(Task::class, 'taskID');
+        return $this->belongsTo(Task::class, 'task_id');
     }
 }

@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('workSpaceID');
-            $table->string('Name');
-            $table->string('Description');
-            $table->date('DueDate');
-            $table->string('Priority');
+            $table->unsignedBigInteger('workspace_id');
+            $table->string('name');
+            $table->string('description');
+            $table->date('due_date');
+            $table->string('priority');
         });
     }
 

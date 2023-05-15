@@ -10,18 +10,19 @@ use App\Models\User;
 class WorkspaceList extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 
     protected $fillable = [
-        'userID',
-        'workSpaceID',
-        'Role',
+        'user_id',
+        'workspace_id',
+        'role',
     ];
 
     public function workspace(){
-        return $this->hasMany(Workspace::class, 'id', 'workSpaceID');
+        return $this->belongsTo(Workspace::class, 'workspace_id');
     }
 
     public function user(){
-        return $this->belongsTo(User::class, 'userID');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
