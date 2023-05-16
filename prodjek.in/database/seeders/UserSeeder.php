@@ -20,5 +20,13 @@ class UserSeeder extends Seeder
             'google_id' => '123456789012345678901',
             'password' => bcrypt('testuser1'),
         ]);
+
+        $user = User::create([
+            'name' => 'Test User 2',
+            'username' => 'TestUser2',
+            'email' => 'test2@gmail.com',
+            'google_id' => '420420420420420420420',
+            'password' => bcrypt('testuser2'),
+        ]);
     }
 }

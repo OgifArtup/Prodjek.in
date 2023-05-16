@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2023 at 12:48 PM
+-- Generation Time: May 16, 2023 at 01:10 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -118,7 +118,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `google_id`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Test User', 'TestUser1', 'test@gmail.com', '123456789012345678901', NULL, '$2y$10$z7T9jiVaO4nfypGnFaytS.MfaveY8EbuEYRZ0J4UR35peHmDBtnvO', NULL, '2023-05-15 03:06:30', '2023-05-15 03:06:30');
+(1, 'Test User', 'TestUser1', 'test@gmail.com', '123456789012345678901', NULL, '$2y$10$z7T9jiVaO4nfypGnFaytS.MfaveY8EbuEYRZ0J4UR35peHmDBtnvO', NULL, '2023-05-15 03:06:30', '2023-05-15 03:06:30'),
+(3, 'Test User 2', 'TestUser2', 'test2@gmail.com', '420420420420420420420', NULL, '$2y$10$YB2y556g7s/wxfQOJsk9wO/y7aKxKmGehQDfuKLs.TloI0hVP4bqq', NULL, '2023-05-15 23:09:05', '2023-05-15 23:09:05');
 
 -- --------------------------------------------------------
 
@@ -160,7 +161,8 @@ CREATE TABLE `workspace_lists` (
 
 INSERT INTO `workspace_lists` (`id`, `user_id`, `workspace_id`, `role`) VALUES
 (1, 1, 1, 'Manager'),
-(2, 1, 2, 'Manager');
+(2, 1, 2, 'Manager'),
+(6, 3, 1, 'Member');
 
 --
 -- Indexes for dumped tables
@@ -249,7 +251,7 @@ ALTER TABLE `tasks`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `workspaces`
@@ -261,7 +263,7 @@ ALTER TABLE `workspaces`
 -- AUTO_INCREMENT for table `workspace_lists`
 --
 ALTER TABLE `workspace_lists`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

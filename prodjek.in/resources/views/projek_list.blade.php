@@ -9,7 +9,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <title>Home Page</title>
-    <link rel="stylesheet" href="css/style_projek_list.css" />
+    <link href="{{ asset('css/style_projek_list.css') }}" rel="stylesheet" type="text/css" >
   </head>
   <body>
     <ul>
@@ -81,21 +81,21 @@
         </form>
       </div>
 
-      @foreach ($projects as $project)
-      <a href="/project-details">
+      @for ($i = 0; $i < count($projects); $i++)
+      <a href="{{route('viewDetails', ['id' => $projects[$i]->id])}}">
         <div class="box1">
-          <h2>{{ $project->workspace->name }}</h2>
+          <h2>{{ $projects[$i]->workspace->name }}</h2>
           <p class="task">Team</p>
           <p class="task_num">80</p>
           <p class="task_T">Tasks</p>
-          <p class="bold"><br />{{ $project->workspace->team_name }}</p>
+          <p class="bold"><br />{{ $projects[$i]->workspace->team_name }}</p>
           <p><br />Role</p>
-          <p class="bold"><br />{{ $project->role }}</p>
+          <p class="bold"><br />{{ $projects[$i]->role }}</p>
           <p><br />Detail</p>
-          <p class="bold"><br />{{ $project->workspace->project_detail }}</p>
+          <p class="bold"><br />{{ $projects[$i]->workspace->project_detail }}</p>
         </div>
       </a>
-      @endforeach
+      @endfor
 
       <div class="box1">
         <h2>Project Title</h2>

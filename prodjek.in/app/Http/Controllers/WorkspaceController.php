@@ -13,6 +13,16 @@ class WorkspaceController extends Controller
         // isi user_id ganti sama Auth::user()->id,
         $projects = WorkspaceList::where('user_id', '1')->get();
 
+        // $members = array();
+        // for ($y = 0; $y < count($projects); $y++) {
+        //     $list = WorkspaceList::where('workspace_id', )->get();        
+        //     for ($x = 0; $x < count($list); $x++) {
+        //         array_push($members, $list[$x]->user->name);
+        //     }
+        // }
+
+        // $members = WorkspaceList::where('workspace_id', '1')->get();
+
         return view('projek_list', compact('projects'));
     }
 
@@ -36,11 +46,12 @@ class WorkspaceController extends Controller
     public function viewDetails($id){
         $workspace = Workspace::find($id);
         // Ganti '1' sama Auth::user()->id
-        $list = WorkspaceList::where('user_id', '1')->where('workspace_id', $id)->get();
+        $workspace_list = WorkspaceList::where('workspace_id', $id)->where('user_id', '1')->first();
         // if($list->user_id != Auth::user()->id){
         //     return redirect(route('projek_list'));
         // }
-        if(is_null($workspace) or is_null($list)) return back();
-        return view('detail_prodjek', compact('workspace', 'list'));
+        
+        $members = WorkspaceList::where('workspace_id', $id)->get();
+        return view('detail_prodjek', compact('workspace', 'workspace_list', 'members'));
     }
 }
