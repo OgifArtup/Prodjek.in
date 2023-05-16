@@ -80,7 +80,8 @@
               </div>
 
               <div class="">
-                  <input name="due_date" type="text" class="" value="{{ old('due_date') }}">
+                  <label for="due_date">Due Date</label>
+                  <input name="due_date" type="date" class="" value="{{ old('due_date') }}">
                   @error('due_date')
                       <div class="">
                           {{ $message }}
