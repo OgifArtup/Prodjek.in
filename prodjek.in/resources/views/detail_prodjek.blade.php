@@ -55,12 +55,60 @@
           <p>{{ $workspace->project_detail }}</p>
           <br />
         </div>
+
         <div class="actions">
+          <!-- Note ini untuk sementara -->
+          <div class="task-container">
+            <form action="{{ route('createTask') }}" method="POST" enctype="multipart/form-data" class="">
+              @csrf
+              <div class="">
+                  <input name="name" type="text" class="" placeholder="Task Name" value="{{ old('name') }}">
+                  @error('name')
+                      <div class="">
+                          {{ $message }}
+                      </div>
+                  @enderror
+              </div>
+              
+              <div class="p-2">
+                  <input name="description" type="text" class="" placeholder="Task Description" value="{{ old('description') }}">
+                  @error('description')
+                      <div class="">
+                          {{ $message }}
+                      </div>
+                  @enderror
+              </div>
+
+              <div class="">
+                  <input name="due_date" type="text" class="" value="{{ old('due_date') }}">
+                  @error('due_date')
+                      <div class="">
+                          {{ $message }}
+                      </div>
+                  @enderror
+              </div>
+
+              <div class="">
+                  <input name="priority" type="text" class="" placeholder="Project Detail" value="{{ old('priority') }}">
+                  @error('priority')
+                      <div class="">
+                          {{ $message }}
+                      </div>
+                  @enderror
+              </div>
+
+              <div class="">
+                  <button type="submit" class="">Add Project</button>
+              </div>
+            </form>
+          </div>
+
           <div class="task-container">
             <h2>Make Back-End Auth<a>Re-Assign</a></h2>
             <p>User request login auth from google lorem ipsum<b>Check</b></p>
             <h2>Status: Assigned to "Developer 1"<c>Delete</c></h2>
           </div>
+
           <div class="task-container">
             <h2>Make Back-End Auth<a>Assign</a></h2>
             <p>User request login auth from google lorem ipsum<b>Check</b></p>

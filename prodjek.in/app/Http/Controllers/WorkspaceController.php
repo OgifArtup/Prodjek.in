@@ -54,4 +54,8 @@ class WorkspaceController extends Controller
         $members = WorkspaceList::where('workspace_id', $id)->get();
         return view('detail_prodjek', compact('workspace', 'workspace_list', 'members'));
     }
+
+    public function createTask(){
+        
+    }
 }

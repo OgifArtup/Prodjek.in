@@ -34,3 +34,4 @@ Route::get('/project-list', [WorkspaceController::class, 'viewProjects'])->name(
 Route::post('/add-project', [WorkspaceController::class, 'createProject'])->name('createProject');
 
 Route::get('/project-details/{id}', [WorkspaceController::class, 'viewDetails'])->name('viewDetails');
+Route::post('/add-project', [WorkspaceController::class, 'createTask'])->name('createTask');

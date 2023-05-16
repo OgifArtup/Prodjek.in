@@ -46,37 +46,37 @@
       <!-- Minta tolong dibenerin sizing nya (figo) -->
       <div class="boxadd">
         <h2>Add New Project</h2>
-        <form action="{{ route('createProject') }}" method="POST" enctype="multipart/form-data" class="m-5">
+        <form action="{{ route('createProject') }}" method="POST" enctype="multipart/form-data" class="">
           @csrf
           <div class="">
-              <input name="name" type="text" class="form-control" id="formGroupExampleInput" placeholder="Project Name" value="{{ old('name') }}">
+              <input name="name" type="text" class="" placeholder="Project Name" value="{{ old('name') }}">
               @error('name')
-                  <div class="text-danger">
+                  <div class="">
                       {{ $message }}
                   </div>
               @enderror
           </div>
           
           <div class="p-2">
-              <input name="team_name" type="text" class="form-control" id="formGroupExampleInput" placeholder="Team Name" value="{{ old('team_name') }}">
+              <input name="team_name" type="text" class="" placeholder="Team Name" value="{{ old('team_name') }}">
               @error('team_name')
-                  <div class="text-danger">
+                  <div class="">
                       {{ $message }}
                   </div>
               @enderror
           </div>
 
           <div class="">
-              <input name="project_detail" type="text" class="form-control" id="formGroupExampleInput" placeholder="Project Detail" value="{{ old('project_detail') }}">
+              <input name="project_detail" type="text" class="" placeholder="Project Detail" value="{{ old('project_detail') }}">
               @error('project_detail')
-                  <div class="text-danger">
+                  <div class="">
                       {{ $message }}
                   </div>
               @enderror
           </div>
 
-        <div class="form-row mb-4 d-grid p-2">
-              <button type="submit" class="btn btn-primary">Add Project</button>
+          <div class="">
+              <button type="submit" class="">Add Project</button>
           </div>
         </form>
       </div>
