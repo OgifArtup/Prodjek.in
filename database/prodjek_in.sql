@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2023 at 01:10 PM
+-- Generation Time: May 17, 2023 at 05:43 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -32,6 +32,14 @@ CREATE TABLE `assignment_lists` (
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `task_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `assignment_lists`
+--
+
+INSERT INTO `assignment_lists` (`id`, `user_id`, `task_id`) VALUES
+(2, 1, 3),
+(3, 3, 3);
 
 -- --------------------------------------------------------
 
@@ -93,6 +101,13 @@ CREATE TABLE `tasks` (
   `due_date` date NOT NULL,
   `priority` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tasks`
+--
+
+INSERT INTO `tasks` (`id`, `workspace_id`, `name`, `description`, `due_date`, `priority`) VALUES
+(3, 1, 'Test Task', 'User can do something', '0000-00-00', 'Urgent');
 
 -- --------------------------------------------------------
 
@@ -227,7 +242,7 @@ ALTER TABLE `workspace_lists`
 -- AUTO_INCREMENT for table `assignment_lists`
 --
 ALTER TABLE `assignment_lists`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -245,7 +260,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
