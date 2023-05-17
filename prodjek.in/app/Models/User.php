@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\WorkspaceList;
+use App\Models\AssignmentList;
 
 class User extends Authenticatable
 {
@@ -48,5 +49,9 @@ class User extends Authenticatable
 
     public function workspaceList(){
         return $this->hasMany(WorkspaceList::class, 'id');
+    }
+
+    public function assignmentList(){
+        return $this->hasMany(AssignmentList::class, 'id');
     }
 }

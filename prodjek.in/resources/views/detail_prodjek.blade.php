@@ -59,7 +59,7 @@
         <div class="actions">
           <!-- Note ini untuk sementara -->
           <div class="task-container">
-            <form action="{{ route('createTask') }}" method="POST" enctype="multipart/form-data" class="">
+            <form action="{{ route('createTask', ['id' => $workspace->id]) }}" method="POST" enctype="multipart/form-data" class="">
               @csrf
               <div class="">
                   <input name="name" type="text" class="" placeholder="Task Name" value="{{ old('name') }}">
@@ -70,7 +70,7 @@
                   @enderror
               </div>
               
-              <div class="p-2">
+              <div class="">
                   <input name="description" type="text" class="" placeholder="Task Description" value="{{ old('description') }}">
                   @error('description')
                       <div class="">
@@ -90,31 +90,50 @@
               </div>
 
               <div class="">
-                  <input name="priority" type="text" class="" placeholder="Project Detail" value="{{ old('priority') }}">
-                  @error('priority')
-                      <div class="">
-                          {{ $message }}
-                      </div>
-                  @enderror
+                <select name="priority" value="{{ old('priority') }}">
+                  <option value="Important">Important</option>
+                  <option value="Urgent">Urgent</option>
+                  <option value="Normal">Normal</option>
+                  <option value="Low">Low</option>
+                </select>
+                @error('priority')
+                    <div class="">
+                        {{ $message }}
+                    </div>
+                @enderror
               </div>
 
               <div class="">
-                  <button type="submit" class="">Add Project</button>
+                <label for="assign[]">Assign To</label>
+                @foreach ($members as $member)
+                  <label><input type="checkbox" name=assign[] value='{{$member->user->id}}'>{{$member->user->name}}</label>
+                @endforeach
+                @error('assign')
+                    <div class="">
+                        {{ $message }}
+                    </div>
+                @enderror
+              </div>
+
+              <div class="">
+                  <button type="submit" class="">Add Task</button>
               </div>
             </form>
           </div>
-
+          
+          @for ($i = 0; $i < count($tasks); $i++)
           <div class="task-container">
-            <h2>Make Back-End Auth<a>Re-Assign</a></h2>
-            <p>User request login auth from google lorem ipsum<b>Check</b></p>
-            <h2>Status: Assigned to "Developer 1"<c>Delete</c></h2>
+            <h2>{{ $tasks[$i]->name }}<a>Re-Assign</a></h2>
+            <p>{{ $tasks[$i]->description }}<b>Check</b></p>
+            <h2>Deadline : {{ \Carbon\Carbon::parse($tasks[$i]->date)->format('d/m/Y') }}</h2>
+            <h2>Status: Assigned to 
+            @for ($j = 0; $j < count($assignedMember[$i]); $j++)
+              "{{ $assignedMember[$i][$j] }}"
+            @endfor
+            <c>Delete</c></h2>
           </div>
-
-          <div class="task-container">
-            <h2>Make Back-End Auth<a>Assign</a></h2>
-            <p>User request login auth from google lorem ipsum<b>Check</b></p>
-            <h2>Status: Assigned to "Developer 1"<c>Delete</c></h2>
-          </div>
+          @endfor
+          
           <div class="button">
             <a><img src="/assets/add_logo.png" /></a>
           </div>

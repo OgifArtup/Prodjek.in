@@ -4,24 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\WorkspaceRequest;
+use App\Http\Requests\TaskRequest;
 use App\Models\Workspace;
 use App\Models\WorkspaceList;
+use App\Models\Task;
+use App\Models\AssignmentList;
 
 class WorkspaceController extends Controller
 {
     public function viewProjects(){
         // isi user_id ganti sama Auth::user()->id,
         $projects = WorkspaceList::where('user_id', '1')->get();
-
-        // $members = array();
-        // for ($y = 0; $y < count($projects); $y++) {
-        //     $list = WorkspaceList::where('workspace_id', )->get();        
-        //     for ($x = 0; $x < count($list); $x++) {
-        //         array_push($members, $list[$x]->user->name);
-        //     }
-        // }
-
-        // $members = WorkspaceList::where('workspace_id', '1')->get();
 
         return view('projek_list', compact('projects'));
     }
@@ -47,15 +40,42 @@ class WorkspaceController extends Controller
         $workspace = Workspace::find($id);
         // Ganti '1' sama Auth::user()->id
         $workspace_list = WorkspaceList::where('workspace_id', $id)->where('user_id', '1')->first();
+        $members = WorkspaceList::where('workspace_id', $id)->get();
         // if($list->user_id != Auth::user()->id){
         //     return redirect(route('projek_list'));
         // }
         
-        $members = WorkspaceList::where('workspace_id', $id)->get();
-        return view('detail_prodjek', compact('workspace', 'workspace_list', 'members'));
+        $tasks = Task::where('workspace_id', $id)->get();
+        $assignedMember = array();
+        for ($i = 0; $i < count($tasks); $i++) {
+            $temp = AssignmentList::where('task_id', $tasks[$i]->id)->get();
+            $temp_array = array();
+            foreach ($temp as $x){
+                array_push($temp_array, $x->user->name);
+            }
+            array_push($assignedMember, $temp_array);
+        }
+
+        // dd($assignedMember);
+        return view('detail_prodjek', compact('workspace', 'workspace_list', 'members', 'tasks', 'assignedMember'));
     }
 
-    public function createTask(){
-        
+    public function createTask(TaskRequest $request, $id){
+        $task = Task::create([
+            'workspace_id' => $id,
+            'name' => $request->name,
+            'description' => $request->description,
+            'date' => $request->date,
+            'priority' => $request->priority,
+        ]);
+
+        foreach ($request->assign as $x) {
+            AssignmentList::create([
+                'user_id' => $x,
+                'task_id' => $task->id,
+            ]);
+        }
+
+        return back();
     }
 }

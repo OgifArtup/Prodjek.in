@@ -10,7 +10,8 @@ use App\Models\Workspace;
 class Task extends Model
 {
     use HasFactory;
-
+    public $timestamps = false;
+    
     protected $fillable = [
         'name',
         'description',
