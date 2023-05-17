@@ -126,6 +126,7 @@
             <h2>{{ $tasks[$i]->name }}<a>Re-Assign</a></h2>
             <p>{{ $tasks[$i]->description }}<b>Check</b></p>
             <h2>Deadline : {{ \Carbon\Carbon::parse($tasks[$i]->date)->format('d/m/Y') }}</h2>
+            <h2>Priority : {{ $tasks[$i]->priority }}</h2>
             <h2>Status: Assigned to 
             @for ($j = 0; $j < count($assignedMember[$i]); $j++)
               "{{ $assignedMember[$i][$j] }}"
