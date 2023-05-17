@@ -26,12 +26,8 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('/project-details', function () {
-    return view('detail_prodjek');
-});
-
 Route::get('/project-list', [WorkspaceController::class, 'viewProjects'])->name('viewProjects');
 Route::post('/add-project', [WorkspaceController::class, 'createProject'])->name('createProject');
 
 Route::get('/project-details/{id}', [WorkspaceController::class, 'viewDetails'])->name('viewDetails');
-Route::post('/add-project', [WorkspaceController::class, 'createTask'])->name('createTask');
+Route::post('/add-task', [WorkspaceController::class, 'createTask'])->name('createTask');
