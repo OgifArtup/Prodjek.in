@@ -96,18 +96,6 @@
         </div>
       </a>
       @endfor
-
-      <div class="box1">
-        <h2>Project Title</h2>
-        <p class="task">Team</p>
-        <p class="task_num">80</p>
-        <p class="task_T">Tasks</p>
-        <p class="bold"><br />Pandawa Group</p>
-        <p><br />Role</p>
-        <p class="bold"><br />Manager</p>
-        <p><br />Detail</p>
-        <p class="bold"><br />Comprov Prodject.In</p>
-      </div>
     </div>
   </body>
 </html>

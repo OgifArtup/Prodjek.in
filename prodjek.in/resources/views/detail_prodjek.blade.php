@@ -129,9 +129,41 @@
             <h2>Priority : {{ $tasks[$i]->priority }}</h2>
             <h2>Status: Assigned to 
             @for ($j = 0; $j < count($assignedMember[$i]); $j++)
-              "{{ $assignedMember[$i][$j] }}"
+              "{{ $assignedMember[$i][$j]->name }}"
             @endfor
-            <c>Delete</c></h2>
+            <c><form action="{{route('deleteTask', ['id' => $tasks[$i]->id])}}" method="post">
+              @csrf
+              @method('delete')
+              <button type="submit" class="">Delete</button>
+            </form></c>
+            </h2>
+          </div>
+          <div class="task-container">
+            <h2>{{ $tasks[$i]->name }} Assigned Members :</h2>
+            <h2>
+              @for ($j = 0; $j < count($assignedMember[$i]); $j++)
+                <form action="{{route('deleteAssignedMember')}}" method="POST">
+                  @csrf
+                  @method('delete')
+                  {{ $assignedMember[$i][$j]->name }}
+                  <input type="hidden" name="user_id" value="{{ $assignedMember[$i][$j]->id }}">
+                  <input type="hidden" name="task_id" value="{{ $tasks[$i]->id }}">
+                  <c><button type="submit" class="">Delete</button></c>
+                </form>
+              @endfor
+            </h2>
+            <h2>Assign Other Members</h2>
+              <form action="{{ route('addAssignedMembers', ['id' => $tasks[$i]->id]) }}" method="POST">
+                @csrf
+                <div class="">
+                  @for ($j = 0; $j < count($nonAssignedMember[$i]); $j++)
+                    <label><input type="checkbox" name=assign[] value='{{$nonAssignedMember[$i][$j]->id}}'>{{ $nonAssignedMember[$i][$j]->name }}</label>
+                  @endfor
+                </div>
+                <div class="">
+                  <button type="submit" class="">Assign Members</button>
+              </div>
+              </form>
           </div>
           @endfor
           
