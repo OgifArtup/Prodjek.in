@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 17, 2023 at 05:43 PM
+-- Generation Time: May 18, 2023 at 01:16 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -39,7 +39,10 @@ CREATE TABLE `assignment_lists` (
 
 INSERT INTO `assignment_lists` (`id`, `user_id`, `task_id`) VALUES
 (2, 1, 3),
-(3, 3, 3);
+(3, 3, 3),
+(4, 1, 4),
+(5, 3, 4),
+(6, 1, 5);
 
 -- --------------------------------------------------------
 
@@ -107,7 +110,9 @@ CREATE TABLE `tasks` (
 --
 
 INSERT INTO `tasks` (`id`, `workspace_id`, `name`, `description`, `due_date`, `priority`) VALUES
-(3, 1, 'Test Task', 'User can do something', '0000-00-00', 'Urgent');
+(3, 1, 'Test Task', 'User can do something', '0000-00-00', 'Urgent'),
+(4, 1, 'Test Task 2', 'User can use the project', '0000-00-00', 'Low'),
+(5, 1, 'Test Task', 'Something', '0000-00-00', 'Urgent');
 
 -- --------------------------------------------------------
 
@@ -188,8 +193,8 @@ INSERT INTO `workspace_lists` (`id`, `user_id`, `workspace_id`, `role`) VALUES
 --
 ALTER TABLE `assignment_lists`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `assignment_lists_user_id_foreign` (`user_id`),
-  ADD KEY `assignment_lists_task_id_foreign` (`task_id`);
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `task_id` (`task_id`);
 
 --
 -- Indexes for table `migrations`
@@ -210,7 +215,7 @@ ALTER TABLE `personal_access_tokens`
 --
 ALTER TABLE `tasks`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `tasks_workspace_id_foreign` (`workspace_id`);
+  ADD KEY `workspace_id` (`workspace_id`);
 
 --
 -- Indexes for table `users`
@@ -231,8 +236,8 @@ ALTER TABLE `workspaces`
 --
 ALTER TABLE `workspace_lists`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `workspace_lists_user_id_foreign` (`user_id`),
-  ADD KEY `workspace_lists_workspace_id_foreign` (`workspace_id`);
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `workspace_id` (`workspace_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -242,7 +247,7 @@ ALTER TABLE `workspace_lists`
 -- AUTO_INCREMENT for table `assignment_lists`
 --
 ALTER TABLE `assignment_lists`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -260,7 +265,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -288,21 +293,21 @@ ALTER TABLE `workspace_lists`
 -- Constraints for table `assignment_lists`
 --
 ALTER TABLE `assignment_lists`
-  ADD CONSTRAINT `assignment_lists_task_id_foreign` FOREIGN KEY (`task_id`) REFERENCES `tasks` (`id`),
-  ADD CONSTRAINT `assignment_lists_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `assignment_lists_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `assignment_lists_ibfk_2` FOREIGN KEY (`task_id`) REFERENCES `tasks` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tasks`
 --
 ALTER TABLE `tasks`
-  ADD CONSTRAINT `tasks_workspace_id_foreign` FOREIGN KEY (`workspace_id`) REFERENCES `workspaces` (`id`);
+  ADD CONSTRAINT `tasks_ibfk_1` FOREIGN KEY (`workspace_id`) REFERENCES `workspaces` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `workspace_lists`
 --
 ALTER TABLE `workspace_lists`
-  ADD CONSTRAINT `workspace_lists_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `workspace_lists_workspace_id_foreign` FOREIGN KEY (`workspace_id`) REFERENCES `workspaces` (`id`);
+  ADD CONSTRAINT `workspace_lists_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `workspace_lists_ibfk_2` FOREIGN KEY (`workspace_id`) REFERENCES `workspaces` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
