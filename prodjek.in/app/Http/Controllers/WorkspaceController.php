@@ -103,7 +103,6 @@ class WorkspaceController extends Controller
                 'user_id' => $x,
                 'task_id' => $id,
             ]);
-            
         }
         
         return back();

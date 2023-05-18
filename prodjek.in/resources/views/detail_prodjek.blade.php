@@ -152,18 +152,22 @@
                 </form>
               @endfor
             </h2>
+            @if (count($nonAssignedMember[$i])>0)
             <h2>Assign Other Members</h2>
-              <form action="{{ route('addAssignedMembers', ['id' => $tasks[$i]->id]) }}" method="POST">
-                @csrf
-                <div class="">
-                  @for ($j = 0; $j < count($nonAssignedMember[$i]); $j++)
-                    <label><input type="checkbox" name=assign[] value='{{$nonAssignedMember[$i][$j]->id}}'>{{ $nonAssignedMember[$i][$j]->name }}</label>
-                  @endfor
-                </div>
-                <div class="">
-                  <button type="submit" class="">Assign Members</button>
+            <form action="{{ route('addAssignedMembers', ['id' => $tasks[$i]->id]) }}" method="POST">
+              @csrf
+              <div class="">
+                @for ($j = 0; $j < count($nonAssignedMember[$i]); $j++)
+                  <label><input type="checkbox" name=assign[] value='{{$nonAssignedMember[$i][$j]->id}}'>{{ $nonAssignedMember[$i][$j]->name }}</label>
+                @endfor
               </div>
-              </form>
+              <div class="">
+                <button type="submit" class="">Assign Members</button>
+              </div>
+            </form>
+            @elseif (count($nonAssignedMember[$i]) === 0)
+            
+            @endif
           </div>
           @endfor
           
