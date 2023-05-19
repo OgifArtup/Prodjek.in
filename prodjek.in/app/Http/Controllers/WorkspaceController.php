@@ -78,6 +78,7 @@ class WorkspaceController extends Controller
             'description' => $request->description,
             'date' => $request->date,
             'priority' => $request->priority,
+            'status' => 'Ongoing',
         ]);
 
         foreach ($request->assign as $x) {
@@ -94,6 +95,22 @@ class WorkspaceController extends Controller
         $task = Task::find($id);
         Task::where("id", $task->id)->delete();
         Task::destroy($id);
+        return back();
+    }
+
+    public function checkTask($id){
+        $task = Task::find($id);
+        $task -> update([
+            'status' => 'Done',
+        ]);
+        return back();
+    }
+
+    public function uncheckTask($id){
+        $task = Task::find($id);
+        $task -> update([
+            'status' => 'Ongoing',
+        ]);
         return back();
     }
 

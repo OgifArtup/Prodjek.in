@@ -18,6 +18,7 @@ class Task extends Model
         'workspace_id',
         'due_date',
         'priority',
+        'status',
     ];
 
     public function assignment(){

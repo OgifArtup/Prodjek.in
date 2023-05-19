@@ -124,10 +124,25 @@
           @for ($i = 0; $i < count($tasks); $i++)
           <div class="task-container">
             <h2>{{ $tasks[$i]->name }}<a>Re-Assign</a></h2>
-            <p>{{ $tasks[$i]->description }}<b>Check</b></p>
+            <p>{{ $tasks[$i]->description }}<b>
+            @if ($tasks[$i]->status === 'Ongoing')
+            <form action="{{route('checkTask', ['id' => $tasks[$i]->id])}}" method="post">
+              @csrf
+              @method('patch')
+              <button type="submit" class="">Check</button>
+            </form>
+            @elseif ($tasks[$i]->status === 'Done')
+            <form action="{{route('uncheckTask', ['id' => $tasks[$i]->id])}}" method="post">
+              @csrf
+              @method('patch')
+              <button type="submit" class="">Uncheck</button>
+            </form>
+            @endif
+            </b></p>
             <h2>Deadline : {{ \Carbon\Carbon::parse($tasks[$i]->date)->format('d/m/Y') }}</h2>
             <h2>Priority : {{ $tasks[$i]->priority }}</h2>
-            <h2>Status: Assigned to 
+            <h2>Status: {{ $tasks[$i]->status }}</h2>
+            <h2>Assigned to :
             @for ($j = 0; $j < count($assignedMember[$i]); $j++)
               "{{ $assignedMember[$i][$j]->name }}"
             @endfor

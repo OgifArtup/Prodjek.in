@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('description');
             $table->date('due_date');
             $table->string('priority');
+            $table->string('status');
         });
     }
 

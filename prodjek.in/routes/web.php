@@ -31,6 +31,8 @@ Route::post('/add-project', [WorkspaceController::class, 'createProject'])->name
 
 Route::get('/project-details/{id}', [WorkspaceController::class, 'viewDetails'])->name('viewDetails');
 Route::post('/add-task/{id}', [WorkspaceController::class, 'createTask'])->name('createTask');
+Route::patch('/check-task/{id}', [WorkspaceController::class, 'checkTask'])->name('checkTask');
+Route::patch('/uncheck-task/{id}', [WorkspaceController::class, 'uncheckTask'])->name('uncheckTask');
 Route::delete('/delete-task/{id}', [WorkspaceController::class, 'deleteTask'])->name('deleteTask');
 
 Route::post('/add-assigned-member/{id}', [WorkspaceController::class, 'addAssignedMembers'])->name('addAssignedMembers');
