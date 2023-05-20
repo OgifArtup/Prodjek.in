@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WorkspaceController;
+use App\Http\Controllers\GoogleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +38,6 @@ Route::delete('/delete-task/{id}', [WorkspaceController::class, 'deleteTask'])->
 
 Route::post('/add-assigned-member/{id}', [WorkspaceController::class, 'addAssignedMembers'])->name('addAssignedMembers');
 Route::delete('/delete-assigned-member', [WorkspaceController::class, 'deleteAssignedMember'])->name('deleteAssignedMember');
+
+Route::get('/auth/google',[GoogleController::class, 'redirectToGoogle'])->name('googleLogin');
+Route::get('/auth/google/callback',[GoogleController::class, 'handleGoogleCallback'])->name('googleCallback');

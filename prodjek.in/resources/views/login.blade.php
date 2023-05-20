@@ -36,13 +36,16 @@
           <h1>Welcome</h1>
           <div class="form">
             <div class="login_3rd_party">
-              <form action="home.html">
+              {{-- <form action="home.html">
                 <input
                   type="submit"
                   class="submit-google"
                   value="Login with Google"
                 />
-              </form>
+              </form> --}}
+              <a href="{{ route('googleLogin') }}">
+
+              </a>
             </div>
             <br />
             <p>- OR -</p>
