@@ -44,7 +44,7 @@
                 />
               </form> --}}
               <a href="{{ route('googleLogin') }}">
-
+                Login
               </a>
             </div>
             <br />
