@@ -67,7 +67,7 @@ class WorkspaceController extends Controller
             array_push($nonAssignedMember, $temp_array);
         }
 
-        // dd($nonAssignedMember);
+        // dd($id);
         return view('detail_prodjek', compact('workspace', 'workspace_list', 'members', 'tasks', 'assignedMember', 'nonAssignedMember'));
     }
 

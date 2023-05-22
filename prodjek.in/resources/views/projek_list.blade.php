@@ -81,21 +81,21 @@
         </form>
       </div>
 
-      @for ($i = 0; $i < count($projects); $i++)
-      <a href="{{route('viewDetails', ['id' => $projects[$i]->id])}}">
+      @foreach ($projects as $project)
+      <a href="{{route('viewDetails', ['id' => $project->workspace_id])}}">
         <div class="box1">
-          <h2>{{ $projects[$i]->workspace->name }}</h2>
+          <h2>{{ $project->workspace->name }}</h2>
           <p class="task">Team</p>
           <p class="task_num">80</p>
           <p class="task_T">Tasks</p>
-          <p class="bold"><br />{{ $projects[$i]->workspace->team_name }}</p>
+          <p class="bold"><br />{{ $project->workspace->team_name }}</p>
           <p><br />Role</p>
-          <p class="bold"><br />{{ $projects[$i]->role }}</p>
+          <p class="bold"><br />{{ $project->role }}</p>
           <p><br />Detail</p>
-          <p class="bold"><br />{{ $projects[$i]->workspace->project_detail }}</p>
+          <p class="bold"><br />{{ $project->workspace->project_detail }}</p>
         </div>
       </a>
-      @endfor
+      @endforeach
     </div>
   </body>
 </html>
