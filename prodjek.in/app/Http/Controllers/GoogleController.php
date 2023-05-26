@@ -3,37 +3,52 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Laravel\Socialite\Facades\Socialite;
+use Exception;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Laravel\Socialite\Facades\Socialite;
-
+  
 class GoogleController extends Controller
 {
-    public function redirectToGoogle(){
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function redirectToGoogle()
+    {
         return Socialite::driver('google')->redirect();
     }
-
-    public function handleGoogleCallback(){
-        try{
+        
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function handleGoogleCallback()
+    {
+        try {
             $user = Socialite::driver('google')->user();
             dd($user);
-            // $findUser = User::where('google_id', $user->getId())->first();
-            // if($findUser){
-            //     Auth::login($findUser);
-            //     return redirect()->intended('home');
+            // $finduser = User::where('google_id', $user->id)->first();
+            // if($finduser){
+            //     Auth::login($finduser);
+            //     return redirect()->intended('dashboard');
             // }else{
             //     $newUser = User::create([
             //         'name' => $user->name,
-            //         'username' => $user->email,
             //         'email' => $user->email,
-            //         'google_id' => $user->id,
-            //         'password' => $user->bcrypt('123456')
+            //         'google_id'=> $user->id,
+            //         'password' => encrypt('123456dummy')
             //     ]);
-            //     Auth::login($newUser);
-            //     return redirect()->intended('home');
+      
+            //     Auth::login($newUser); 
+            //     return redirect()->intended('dashboard');
             // }
-        }catch (\Throwable $th){
-
+      
+        } catch (Exception $e) {
+            dd($e->getMessage());
         }
     }
 }
+
