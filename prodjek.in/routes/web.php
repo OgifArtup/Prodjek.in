@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WorkspaceController;
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,15 +18,18 @@ use App\Http\Controllers\GoogleController;
 
 Route::get('/', function () {
     return view('main');
-});
+})->middleware('guest');
 
 Route::get('/login', function () {
     return view('login');
-});
+})->middleware('guest');
 
-Route::get('/home', function () {
-    return view('home');
-});
+Route::get('/auth/google',[GoogleController::class, 'redirectToGoogle'])->name('googleLogin');
+Route::get('/auth/google/callback',[GoogleController::class, 'handleGoogleCallback'])->name('handleGoogleCallback');
+Route::get('/register', [UserController::class, 'register'])->name('register');
+Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+
+Route::get('/home', [WorkspaceController::class, 'viewHome'])->name('viewHome');
 
 Route::get('/project-list', [WorkspaceController::class, 'viewProjects'])->name('viewProjects');
 Route::post('/add-project', [WorkspaceController::class, 'createProject'])->name('createProject');
@@ -38,6 +42,3 @@ Route::delete('/delete-task/{id}', [WorkspaceController::class, 'deleteTask'])->
 
 Route::post('/add-assigned-member/{id}', [WorkspaceController::class, 'addAssignedMembers'])->name('addAssignedMembers');
 Route::delete('/delete-assigned-member', [WorkspaceController::class, 'deleteAssignedMember'])->name('deleteAssignedMember');
-
-Route::get('/auth/google',[GoogleController::class, 'redirectToGoogle'])->name('redirectToGoogle');
-Route::get('/auth/google/callback',[GoogleController::class, 'handleGoogleCallback'])->name('handleGoogleCallback');

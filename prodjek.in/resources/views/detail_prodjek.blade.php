@@ -28,7 +28,12 @@
         <a class="active" href="/project-list"><img src="/assets/prodjek_logo.png" /> Prodjek</a>
       </li>
       <li>
-        <b><img src="/assets/logout_logo.png" /> Log Out</b>
+        <b><form action="/logout" method="POST">@csrf
+          <img src="/assets/logout_logo.png" /> 
+            <button type="submit" class="dropdown-item">
+                Logout
+            </button>
+        </form></b>
       </li>
     </ul>
 

@@ -34,9 +34,12 @@
       </li>
       <ul class="ul2">
         <li>
-          <a href="/login">
-            <b><img src="assets/logout_logo.png" /> Log Out</b></a
-          >
+        <b><form action="/logout" method="POST">@csrf
+          <img src="/assets/logout_logo.png" /> 
+            <button type="submit" class="dropdown-item">
+                Logout
+            </button>
+        </form></b>
         </li>
       </ul>
     </ul>

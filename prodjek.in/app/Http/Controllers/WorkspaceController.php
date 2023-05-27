@@ -13,6 +13,10 @@ use App\Models\User;
 
 class WorkspaceController extends Controller
 {
+    public function viewHome(){
+        return view('home');
+    }
+
     public function viewProjects(){
         // isi user_id ganti sama Auth::user()->id,
         $projects = WorkspaceList::where('user_id', '1')->get();
