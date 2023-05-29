@@ -24,9 +24,16 @@ Route::get('/login', function () {
     return view('login');
 })->middleware('guest');
 
+// Google Authentication
 Route::get('/auth/google',[GoogleController::class, 'redirectToGoogle'])->name('googleLogin');
 Route::get('/auth/google/callback',[GoogleController::class, 'handleGoogleCallback'])->name('handleGoogleCallback');
-Route::get('/register', [UserController::class, 'register'])->name('register');
+
+// Manual Login
+Route::post('/manual-login', [UserController::class, 'manualLogin'])->name('manualLogin');
+
+// Route::get('/register', [UserController::class, 'register'])->name('register');
+
+// Logout
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
 Route::get('/home', [WorkspaceController::class, 'viewHome'])->name('viewHome');

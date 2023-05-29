@@ -48,7 +48,7 @@
 
     <!-- Hero -->
     <div>
-      <h1>Good Morning, Username!</h1>
+      <h1>Good Morning, {{ auth()->user()->name }}!</h1>
       <div class="container">
         <div class="card">
           <h3>Uncompleted Task</h3>

@@ -33,7 +33,7 @@ class GoogleController extends Controller
             'email' => $googleUser->email,
             'google_id'=> $googleUser->id,
             'username' => $googleUser->name,
-            'password' => encrypt('123456dummy')
+            'password' => bcrypt('123456dummy')
         ]);
     
         Auth::login($user);

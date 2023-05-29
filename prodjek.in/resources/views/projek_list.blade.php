@@ -42,7 +42,7 @@
     </ul>
 
     <div>
-      <h1>Good Morning, Username!</h1>
+      <h1>Good Morning, {{ auth()->user()->name }}!</h1>
     </div>
 
     <div class="container">

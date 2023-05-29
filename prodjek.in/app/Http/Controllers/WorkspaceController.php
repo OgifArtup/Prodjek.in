@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\WorkspaceRequest;
 use App\Http\Requests\TaskRequest;
 use App\Models\Workspace;
@@ -18,8 +19,7 @@ class WorkspaceController extends Controller
     }
 
     public function viewProjects(){
-        // isi user_id ganti sama Auth::user()->id,
-        $projects = WorkspaceList::where('user_id', '1')->get();
+        $projects = WorkspaceList::where('user_id', Auth::user()->id)->get();
 
         return view('projek_list', compact('projects'));
     }
@@ -33,7 +33,7 @@ class WorkspaceController extends Controller
 
         WorkspaceList::create([
             // isi user_id ganti sama Auth::user()->id,
-            'user_id' => '1',
+            'user_id' => Auth::user()->id,
             'workspace_id' => $workspace->id,
             'role' => 'Manager',
         ]);
@@ -43,13 +43,12 @@ class WorkspaceController extends Controller
 
     public function viewDetails($id){
         $workspace = Workspace::find($id);
-        // Ganti '1' sama Auth::user()->id
-        $workspace_list = WorkspaceList::where('workspace_id', $id)->where('user_id', '1')->first();
+        $workspace_list = WorkspaceList::where('workspace_id', $id)->where('user_id', Auth::user()->id)->first();
         $members = WorkspaceList::where('workspace_id', $id)->get();
 
-        // if($list->user_id != Auth::user()->id){
-        //     return redirect(route('projek_list'));
-        // }
+        if($workspace_list->user_id != Auth::user()->id){
+            return redirect(route('viewProjects'));
+        }
         
         $tasks = Task::where('workspace_id', $id)->get();
         $assignedMember = array();
@@ -71,7 +70,6 @@ class WorkspaceController extends Controller
             array_push($nonAssignedMember, $temp_array);
         }
 
-        // dd($id);
         return view('detail_prodjek', compact('workspace', 'workspace_list', 'members', 'tasks', 'assignedMember', 'nonAssignedMember'));
     }
 

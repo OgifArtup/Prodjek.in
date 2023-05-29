@@ -50,22 +50,35 @@
             <br />
             <p>- OR -</p>
             <br />
-            <form action="/home">
+            <form action="{{ route('manualLogin') }}" method="POST" enctype="multipart/form-data">
+              @csrf
               <div class="input-field">
                 <input
+                  name="email"
                   type="text"
                   class="input"
                   id="email"
                   placeholder="Email"
                 />
+                @error('email')
+                    <div class="text-danger">
+                        {{ $message }}
+                    </div>
+                @enderror
               </div>
               <div class="input-field">
                 <input
+                  name="password"
                   type="password"
                   class="input"
                   id="email"
                   placeholder="Password"
                 />
+                @error('password')
+                    <div class="text-danger">
+                        {{ $message }}
+                    </div>
+                @enderror
               </div>
               <br />
               <div class="input-field">
