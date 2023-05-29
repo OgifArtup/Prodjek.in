@@ -49,7 +49,7 @@ class WorkspaceController extends Controller
         if($workspace_list->user_id != Auth::user()->id){
             return redirect(route('viewProjects'));
         }
-        
+
         $tasks = Task::where('workspace_id', $id)->get();
         $assignedMember = array();
         $nonAssignedMember = array();
@@ -71,6 +71,17 @@ class WorkspaceController extends Controller
         }
 
         return view('detail_prodjek', compact('workspace', 'workspace_list', 'members', 'tasks', 'assignedMember', 'nonAssignedMember'));
+    }
+
+    public function inviteMember(Request $request, $id){
+        $memberId = User::where('username', $request->username)->value('id');
+        $workspaceList = WorkspaceList::create([
+            'user_id' => $memberId,
+            'workspace_id' => $id,
+            'role' => 'Member'
+        ]);
+
+        return back();
     }
 
     public function createTask(TaskRequest $request, $id){
@@ -123,7 +134,7 @@ class WorkspaceController extends Controller
                 'task_id' => $id,
             ]);
         }
-        
+
         return back();
     }
 
@@ -133,4 +144,5 @@ class WorkspaceController extends Controller
         AssignmentList::destroy($assign->id);
         return back();
     }
+
 }
