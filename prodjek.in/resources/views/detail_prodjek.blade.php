@@ -29,7 +29,7 @@
       </li>
       <li>
         <b><form action="/logout" method="POST">@csrf
-          <img src="/assets/logout_logo.png" /> 
+          <img src="/assets/logout_logo.png" />
             <button type="submit" class="dropdown-item">
                 Logout
             </button>
@@ -46,7 +46,7 @@
           <h2>Members</h2>
           <p>
             @foreach ($members as $member)
-              | {{ $member->user->name }} | 
+              | {{ $member->user->name }} |
             @endforeach
           </p>
           <br />
@@ -59,6 +59,22 @@
           <h2>Detail</h2>
           <p>{{ $workspace->project_detail }}</p>
           <br />
+          <h2>Invite Team Member</h2>
+          <form action="{{ route('inviteMember', ['id' => $workspace->id]) }}" method="POST" enctype="multipart/form-data" class="">
+            @csrf
+            <div class="">
+                <input name="username" type="text" class="" placeholder="Add Username">
+                @error('name')
+                    <div class="">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+            <div class="">
+                <button type="submit" class="">INVITE</button>
+            </div>
+          </form>
+        </div>
         </div>
 
         <div class="actions">
@@ -74,7 +90,7 @@
                       </div>
                   @enderror
               </div>
-              
+
               <div class="">
                   <input name="description" type="text" class="" placeholder="Task Description" value="{{ old('description') }}">
                   @error('description')
@@ -125,7 +141,7 @@
               </div>
             </form>
           </div>
-          
+
           @for ($i = 0; $i < count($tasks); $i++)
           <div class="task-container">
             <h2>{{ $tasks[$i]->name }}<a>Re-Assign</a></h2>
@@ -186,11 +202,11 @@
               </div>
             </form>
             @elseif (count($nonAssignedMember[$i]) === 0)
-            
+
             @endif
           </div>
           @endfor
-          
+
           <div class="button">
             <a><img src="/assets/add_logo.png" /></a>
           </div>

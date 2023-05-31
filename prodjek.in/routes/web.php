@@ -44,6 +44,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/project-list', [WorkspaceController::class, 'viewProjects'])->name('viewProjects');
     Route::post('/add-project', [WorkspaceController::class, 'createProject'])->name('createProject');
     
+
     Route::get('/project-details/{id}', [WorkspaceController::class, 'viewDetails'])->name('viewDetails');
     Route::post('/add-task/{id}', [WorkspaceController::class, 'createTask'])->name('createTask');
     Route::patch('/check-task/{id}', [WorkspaceController::class, 'checkTask'])->name('checkTask');
