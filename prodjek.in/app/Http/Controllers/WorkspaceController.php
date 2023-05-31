@@ -11,14 +11,21 @@ use App\Models\WorkspaceList;
 use App\Models\Task;
 use App\Models\AssignmentList;
 use App\Models\User;
+use Hash;
 
 class WorkspaceController extends Controller
 {
     public function viewHome(){
+        if(Hash::check('123456dummy', Auth::user()->password, [])){
+            return to_route("firstTimeLogin");
+        }
         return view('home');
     }
 
     public function viewProjects(){
+        if(Hash::check('123456dummy', Auth::user()->password, [])){
+            return to_route("firstTimeLogin");
+        }
         $projects = WorkspaceList::where('user_id', Auth::user()->id)->get();
 
         return view('projek_list', compact('projects'));
@@ -42,6 +49,10 @@ class WorkspaceController extends Controller
     }
 
     public function viewDetails($id){
+        if(Hash::check('123456dummy', Auth::user()->password, [])){
+            return to_route("firstTimeLogin");
+        }
+        
         $workspace = Workspace::find($id);
         $workspace_list = WorkspaceList::where('workspace_id', $id)->where('user_id', Auth::user()->id)->first();
         $members = WorkspaceList::where('workspace_id', $id)->get();

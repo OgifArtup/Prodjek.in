@@ -38,6 +38,8 @@ Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/home', [WorkspaceController::class, 'viewHome'])->name('viewHome');
+    Route::get('/first-time', [GoogleController::class, 'firstTimeLogin'])->name('firstTimeLogin');
+    Route::post('/make-pass', [GoogleController::class, 'makePassword'])->name('makePassword');
     
     Route::get('/project-list', [WorkspaceController::class, 'viewProjects'])->name('viewProjects');
     Route::post('/add-project', [WorkspaceController::class, 'createProject'])->name('createProject');
