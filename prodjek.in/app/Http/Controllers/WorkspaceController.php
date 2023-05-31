@@ -86,6 +86,10 @@ class WorkspaceController extends Controller
 
     public function inviteMember(Request $request, $id){
         $memberId = User::where('username', $request->username)->value('id');
+        if(is_null($memberId))
+        {
+            return back();
+        }
         $workspaceList = WorkspaceList::create([
             'user_id' => $memberId,
             'workspace_id' => $id,
