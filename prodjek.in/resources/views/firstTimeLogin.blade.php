@@ -12,11 +12,11 @@
         <div class="card shadow rounded-4">
             <div class="card-body rounded-4">
             <form action="{{ route('makePassword') }}" method="POST" enctype="multipart/form-data" class="m-5">
-                <h1 class="text-center">Login</h1>
+                <h1 class="text-center">Create Password</h1>
                 @csrf
                 <div class="form-row mb-1">
                     <div class="p-2">
-                        <label for="password" class="mb-1">Create Password</label>
+                        <label for="password" class="mb-1">New Password</label>
                         <input name="password" type="password" class="form-control" id="formGroupExampleInput" autofocus placeholder="Insert your password" value="{{ old('password') }}">
                         @error('password')
                             <div class="text-danger">
