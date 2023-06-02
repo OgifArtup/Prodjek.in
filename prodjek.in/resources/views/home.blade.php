@@ -35,7 +35,7 @@
       <ul class="ul2">
         <li>
         <b><form action="/logout" method="POST">@csrf
-          <img src="/assets/logout_logo.png" /> 
+          <img src="/assets/logout_logo.png" />
             <button type="submit" class="dropdown-item">
                 Logout
             </button>
@@ -52,19 +52,19 @@
       <div class="container">
         <div class="card">
           <h3>Uncompleted Task</h3>
-          <h4 style="color: #aa1c1c">80</h4>
+          <h4 style="color: #aa1c1c"> {{$undoneTask}} </h4>
           <p>Tasks Needed to be Completed</p>
         </div>
 
         <div class="card">
-          <h3>New QC Task</h3>
-          <h4 style="color: #aa931c">20</h4>
-          <p>Tasks Needed to be Revised</p>
+          <h3>Done Task</h3>
+          <h4 style="color: #aa931c"> {{$doneTask}} </h4>
+          <p>Tasks Have Been Done</p>
         </div>
 
         <div class="card">
           <h3>Ongoing Projects</h3>
-          <h4 style="color: #1caa4c">5</h4>
+          <h4 style="color: #1caa4c"> {{ $projectAmount }} </h4>
           <p>Projects Being Worked On!</p>
         </div>
       </div>

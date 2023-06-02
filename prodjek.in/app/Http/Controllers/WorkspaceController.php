@@ -19,7 +19,24 @@ class WorkspaceController extends Controller
         if(Hash::check('123456dummy', Auth::user()->password, [])){
             return to_route("firstTimeLogin");
         }
-        return view('home');
+
+        $projectAmount = WorkspaceList::where('user_id', Auth::user()->id)->count();
+        $temp = AssignmentList::where('user_id', Auth::user()->id)->get();
+        $undoneTask = 0;
+        foreach($temp as $i){
+            if($i->task->status == 'Ongoing'){
+                $undoneTask += 1;
+            }
+        }
+
+        $doneTask = 0;
+        foreach($temp as $i){
+            if($i->task->status == 'Done'){
+                $doneTask += 1;
+            }
+        }
+
+        return view('home', compact('projectAmount', 'undoneTask', 'doneTask'));
     }
 
     public function viewProjects(){
@@ -27,8 +44,13 @@ class WorkspaceController extends Controller
             return to_route("firstTimeLogin");
         }
         $projects = WorkspaceList::where('user_id', Auth::user()->id)->get();
+        $taskAmount = array();
 
-        return view('projek_list', compact('projects'));
+        for ($i = 0; $i < count($projects); $i++) {
+            $temp = Task::where('workspace_id', $projects[$i]->workspace_id)->count();
+            array_push($taskAmount, $temp);
+        }
+        return view('projek_list', compact('projects', 'taskAmount'));
     }
 
     public function createProject(WorkspaceRequest $request){
@@ -52,7 +74,7 @@ class WorkspaceController extends Controller
         if(Hash::check('123456dummy', Auth::user()->password, [])){
             return to_route("firstTimeLogin");
         }
-        
+
         $workspace = Workspace::find($id);
         $workspace_list = WorkspaceList::where('workspace_id', $id)->where('user_id', Auth::user()->id)->first();
         $members = WorkspaceList::where('workspace_id', $id)->get();
