@@ -17,7 +17,7 @@
                 <div class="form-row mb-1">
                     <div class="p-2">
                         <label for="password" class="mb-1">New Password</label>
-                        <input name="password" type="password" class="form-control" id="formGroupExampleInput" autofocus placeholder="Insert your password" value="{{ old('password') }}">
+                        <input name="password" type="password" class="form-control" id="formGroupExampleInput" autofocus placeholder="Insert password" value="{{ old('password') }}">
                         @error('password')
                             <div class="text-danger">
                                 {{ $message }}
