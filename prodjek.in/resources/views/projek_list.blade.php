@@ -32,7 +32,7 @@
       <ul class="ul2">
         <li>
         <b><form action="/logout" method="POST">@csrf
-          <img src="/assets/logout_logo.png" /> 
+          <img src="/assets/logout_logo.png" />
             <button type="submit" class="dropdown-item">
                 Logout
             </button>
@@ -59,7 +59,7 @@
                   </div>
               @enderror
           </div>
-          
+
           <div class="p-2">
               <input name="team_name" type="text" class="" placeholder="Team Name" value="{{ old('team_name') }}">
               @error('team_name')
@@ -84,21 +84,21 @@
         </form>
       </div>
 
-      @foreach ($projects as $project)
-      <a href="{{route('viewDetails', ['id' => $project->workspace_id])}}">
+      @for ($i = 0; $i < count($projects); $i++)
+      <a href="{{route('viewDetails', ['id' => $projects[$i]->workspace_id])}}">
         <div class="box1">
-          <h2>{{ $project->workspace->name }}</h2>
+          <h2>{{ $projects[$i]->workspace->name }}</h2>
           <p class="task">Team</p>
-          <p class="task_num">80</p>
           <p class="task_T">Tasks</p>
-          <p class="bold"><br />{{ $project->workspace->team_name }}</p>
+          <p class="task_num"> {{ $taskAmount[$i] }} </p>
+          <p class="bold"><br />{{ $projects[$i]->workspace->team_name }}</p>
           <p><br />Role</p>
-          <p class="bold"><br />{{ $project->role }}</p>
+          <p class="bold"><br />{{ $projects[$i]->role }}</p>
           <p><br />Detail</p>
-          <p class="bold"><br />{{ $project->workspace->project_detail }}</p>
+          <p class="bold"><br />{{ $projects[$i]->workspace->project_detail }}</p>
         </div>
       </a>
-      @endforeach
+      @endfor
     </div>
   </body>
 </html>
