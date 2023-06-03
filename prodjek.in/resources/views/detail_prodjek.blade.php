@@ -19,7 +19,7 @@
 
         <ul class="list1">
           <li><a href="/home"><img src="/assets/dashboard_logo.png" />Dashboard</a></li>
-          <li><a href="#"><img src="/assets/profile_logo.png" />Profile</a></li>
+          <li><a href="/view-profile"><img src="/assets/profile_logo.png" />Profile</a></li>
           <li><a href="/project-list"><img src="/assets/prodjek_logo.png" />Prodjek</a></li>
           <li><form action="/logout" method="POST" class="logOut">
             @csrf

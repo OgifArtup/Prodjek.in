@@ -2,77 +2,111 @@
 
 *{
     margin: 0;
+    padding: 0;
     font-family: "Poppins";
+    list-style: none;
+    text-decoration: none;
 }
 
 
 /* NavBar */
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+
+.sidebar{
+    position:fixed;
+    left: 0;
     width: 16%;
-    background-color: #5571FE;
-    position: fixed;
-    height: 100%;
-    overflow: auto;
-    float: left;
+    height: 100vh;
+    background: #5571FE;
+    flex-direction: column;
+    align-items: center;
 }
 
-li h1 {
-    display:flex;
+.sidebar header{
+    margin-top: 25px;
+    margin-bottom: 75px;
     font-size: 30px;
-    color: white;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    color: #FAF7F0;
+    justify-content: center;
+    line-height: 70px;
+    user-select: none;
+    align-items: center;
+    display: flex;
 }
-
-li h1 img {
-    padding-left: 15px;
+.sidebar header img {
+    /* padding-left: 15px; */
     padding-right: 20px;
-    height: 40px;
-    width: 40px;
+    height: 60px;
+    width: 60px;
 }
 
-li img {
-    height: 25px;
-    width: 25px;
-    padding-right: 10px;
-}
-
-li a {
+.sidebar ul a{
     display: block;
-    color: white;
-    padding: 8px 16px;
-    text-decoration: none;
-    font-size: 25px;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    height: 100%;
+    width: 100%;
+    line-height: 65px;
+    color: #FAF7F0;
+    font-size: 30px;
+    padding-left: 40px;
+    box-sizing: border-box;
+    transition: .3s;
 }
 
-li a.active {
-    background-color: #8699fa;
-    color: white;
+.sidebar li img {
+    height: 30px;
+    width: 30px;
+    padding-right: 20px;
 }
 
-li a:hover:not(.active) {
-    background-color: #8699fa;
+.sidebar li a{
+    align-items: center;
+    display: flex;
+    /* justify-content: center; */
 }
 
-li b{
-    display: block;
-    color: white;
-    padding: 8px 16px;
-    text-decoration: none;
-    font-size: 25px;
-    /* margin-top: 350px; */
-    /* margin-bottom: 15px; */
-    font-weight: normal;
+
+.sidebar ul{
+    height: 68%;
 }
 
-.ul2{
-    margin-top: 20%;
+.sidebar ul li:hover{
+    background-color: rgba(250, 247, 240, 30%);
+    transition: .3s;
 }
+
+.logOut{
+    display: block; 
+    width: 100%; 
+    box-sizing: border-box;
+    transition: .3s;
+    margin-top: 500px;
+    height: 100%; 
+}
+
+.logOut button{
+    line-height: 65px;
+    padding-left: 40px;
+    color: #FAF7F0;
+    display: flex;
+    align-items: center;
+    background-color: #5571FE;
+    border: none;
+    font-size: 30px;
+    width: 100%;
+    height: 100%;
+}
+
+.logOut button img{
+    height: 30px;
+    width: 30px;
+    padding-right: 20px;
+}
+
+.logOut button:hover{
+    background-color: rgba(250, 247, 240, 30%);
+    transition: .3s;
+    cursor: pointer;
+}
+
 
 /* NavBar End */
 
