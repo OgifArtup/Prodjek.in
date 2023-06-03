@@ -37,8 +37,8 @@
     </div>
     <div class="container">
     @for ($i = 0; $i < count($projects); $i++)
-    
-      
+
+
       <div class="box1">
       <a href="{{route('viewDetails', ['id' => $projects[$i]->workspace_id])}}">
           <h2>{{ $projects[$i]->workspace->name }}</h2>
@@ -52,8 +52,8 @@
           <p class="bold"><br />{{ $projects[$i]->workspace->project_detail }}</p>
       </a>
       </div>
-    
-   
+
+
     @endfor
     </div>
      <!-- Minta tolong dibenerin sizing nya (figo) -->
