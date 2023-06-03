@@ -59,22 +59,25 @@
           <br />
           <h2>Detail</h2>
           <p>{{ $workspace->project_detail }}</p>
-          <br />
-          <h2>Invite Team Member</h2>
+          <br/>
+          <h2>Invite Member</h2>
+          
+          <div class="searchbar">
           <form action="{{ route('inviteMember', ['id' => $workspace->id]) }}" method="POST" enctype="multipart/form-data" class="">
             @csrf
-            <div class="">
+            
                 <input name="username" type="text" class="" placeholder="Add Username">
                 @error('name')
                     <div class="">
                         {{ $message }}
                     </div>
                 @enderror
-            </div>
-            <div class="">
-                <button type="submit" class="">INVITE</button>
-            </div>
+            
+            
+                <button type="submit">Add</button>
+            
           </form>
+</div>
         </div>
         </div>
 

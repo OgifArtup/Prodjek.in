@@ -161,6 +161,36 @@ body{
     background-color: white;
 }
 
+.searchBar{
+    display: flex;
+    flex-direction: row;
+}
+
+form{
+    display: flex;
+}
+
+.searchbar form input{
+    /* width: 100%; */
+    padding: 5px 10px;
+    margin: 8px 0;
+    border: 1px solid;
+    border-radius: 0;
+}
+
+.searchbar form button{
+
+    padding: 5px 10px;
+    margin: 8px 0;
+    box-sizing: none;
+    background-color: #2E2E2E;
+    font-weight: bolder;
+    text-align: center;
+    color: #FEFEFE;
+    cursor: pointer;
+    border-style: none;
+}
+
 /* Project Detail END*/
 
 /* Project Task */
