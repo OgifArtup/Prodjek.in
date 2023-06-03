@@ -166,7 +166,7 @@ body{
     flex-direction: row;
 }
 
-form{
+.searchbar form{
     display: flex;
 }
 
