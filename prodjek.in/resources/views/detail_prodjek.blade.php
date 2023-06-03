@@ -22,7 +22,7 @@
         >
       </li>
       <li>
-        <a href="#"><img src="/assets/profile_logo.png" /> Profile</a>
+        <a href="/view-profile"><img src="/assets/profile_logo.png" /> Profile</a>
       </li>
       <li>
         <a class="active" href="/project-list"><img src="/assets/prodjek_logo.png" /> Prodjek</a>

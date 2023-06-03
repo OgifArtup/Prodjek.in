@@ -39,6 +39,32 @@ class WorkspaceController extends Controller
         return view('home', compact('projectAmount', 'undoneTask', 'doneTask'));
     }
 
+    public function viewProfile(){
+        $profile = User::find(Auth::user()->id);
+        return view('view_profile', compact('profile'));
+    }
+
+    public function updateProfile(Request $request){
+        $profile = User::find(Auth::user()->id);
+        $profile -> update([
+            'name' => $request->Username,
+        ]);
+        return redirect(route('viewProfile'));
+    }
+
+    public function updatePassword(Request $request){
+        $profile = User::find(Auth::user()->id);
+        $hashedPassword = User::find(Auth::user()->id)->password;
+        if (Hash::check($request->lastPass, $hashedPassword)) {
+            if(($request->newPass == $request->confPass)&&($request->newPass!=null)){
+                $profile -> update([
+                    'password' => $request->newPass,
+                ]);
+            }
+        }
+        return redirect(route('viewProfile'));
+    }
+
     public function viewProjects(){
         if(Hash::check('123456dummy', Auth::user()->password, [])){
             return to_route("firstTimeLogin");
