@@ -12,16 +12,16 @@
     <link href="{{ asset('css/style_projek_list.css') }}" rel="stylesheet" type="text/css" >
   </head>
   <body>
-    <!-- Navbar -->
-    <div class="sidebar">
-        <header><img src="assets/logo_white.png" /><b>Prodjek.In</b></header>
+   <!-- Navbar -->
+   <div class="sidebar">
+    <header><img src="assets/logo_white.png" /><b>Prodjek.In</b></header>
 
-        <ul class="list1">
-          <li><a href="/home"><img src="assets/dashboard_logo.png" />Dashboard</a></li>
-          <li><a href="#"><img src="assets/profile_logo.png" />Profile</a></li>
-          <li><a href="/project-list"><img src="assets/prodjek_logo.png" />Prodjek</a></li>
-          <li><form action="/logout" method="POST" class="logOut">
-            @csrf
+    <ul class="list1">
+      <li><a href="/home"><img src="assets/dashboard_logo.png" />Dashboard</a></li>
+      <li><a href="#"><img src="assets/profile_logo.png" />Profile</a></li>
+      <li><a href="/project-list"><img src="assets/prodjek_logo.png" />Prodjek</a></li>
+      <li><form action="/logout" method="POST" class="logOut">
+        @csrf
             <button type="submit" class="dropdown-item">
             <img src="/assets/logout_logo.png" />Logout
             </button>
