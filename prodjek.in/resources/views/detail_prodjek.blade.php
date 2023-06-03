@@ -12,36 +12,37 @@
     <link href="{{ asset('css/style_detail_prodjek.css') }}" rel="stylesheet" type="text/css" >
   </head>
   <body>
-    <ul>
-      <li>
-        <h1><img src="/assets/logo_white.png" />Prodjek.in</h1>
-      </li>
-      <li>
-        <a href="/home"
-          ><img src="/assets/dashboard_logo.png" /> Dashboard</a
-        >
-      </li>
-      <li>
-        <a href="#"><img src="/assets/profile_logo.png" /> Profile</a>
-      </li>
-      <li>
-        <a class="active" href="/project-list"><img src="/assets/prodjek_logo.png" /> Prodjek</a>
-      </li>
-      <li>
-        <b><form action="/logout" method="POST">@csrf
-          <img src="/assets/logout_logo.png" />
+    <!-- NavBar -->
+
+    <div class="sidebar">
+        <header><img src="/assets/logo_white.png" /><b>Prodjek.In</b></header>
+
+        <ul class="list1">
+          <li><a href="/home"><img src="/assets/dashboard_logo.png" />Dashboard</a></li>
+          <li><a href="#"><img src="/assets/profile_logo.png" />Profile</a></li>
+          <li><a href="/project-list"><img src="/assets/prodjek_logo.png" />Prodjek</a></li>
+          <li><form action="/logout" method="POST" class="logOut">
+            @csrf
             <button type="submit" class="dropdown-item">
-                Logout
+            <img src="/assets/logout_logo.png" />Logout
             </button>
-        </form></b>
-      </li>
-    </ul>
+        </form></li>
+        </ul>
+      </div>
+    
 
-    <div>
-      <h1>Good Morning, {{ auth()->user()->name }}!</h1>
+    <!-- NavBar End -->
 
-      <div class="prodjek-page">
+    <!-- Hero -->
+    <div class="mainContainer">
+      <div class="Message">
+        <h1>Good Morning, {{ auth()->user()->name }}!</h1>
+      </div>
+      
+
+      <div class="Card">
         <h1>{{ $workspace->name }}</h1>
+        <hr>
         <div class="details">
           <h2>Members</h2>
           <p>
@@ -75,6 +76,86 @@
             </div>
           </form>
         </div>
+        </div>
+
+        <div class="Card">
+        <h1>Tasks</h1>
+        <br>
+        @for ($i = 0; $i < count($tasks); $i++)
+          <div class="task-container">
+            <div class="header">
+            <h2>{{ $tasks[$i]->name }}</h2>
+            <p>Re-Assign</p>
+            </div>
+
+            <div class="body">
+            <p>{{ $tasks[$i]->description }}</p>
+            @if ($tasks[$i]->status === 'Ongoing')
+            <form action="{{route('checkTask', ['id' => $tasks[$i]->id])}}" method="post">
+              @csrf
+              @method('patch')
+              <button type="submit">Check</button>
+            </form>
+            @elseif ($tasks[$i]->status === 'Done')
+            <form action="{{route('uncheckTask', ['id' => $tasks[$i]->id])}}" method="post">
+              @csrf
+              @method('patch')
+              <button type="submit" >Uncheck</button>
+            </form>
+            @endif
+            </div>
+
+            <div class="footer">
+            <p>Deadline : <b>{{ \Carbon\Carbon::parse($tasks[$i]->date)->format('d/m/Y') }}</b></p>
+            <p>Priority :<b> {{ $tasks[$i]->priority }}</b></p>
+            <p>Status:<b> {{ $tasks[$i]->status }}</b></p>
+            <p>Assigned to :
+            @for ($j = 0; $j < count($assignedMember[$i]); $j++)
+            <b>"{{ $assignedMember[$i][$j]->name }}"</b>
+            @endfor
+            </p>
+            <form action="{{route('deleteTask', ['id' => $tasks[$i]->id])}}" method="post">
+              @csrf
+              @method('delete')
+              <button type="submit" class="">Delete</button>
+            </form>
+            
+            </div>
+          </div>
+          
+
+          <div class="task-container">
+            <h2>{{ $tasks[$i]->name }} Assigned Members :</h2>
+            <h2>
+              @for ($j = 0; $j < count($assignedMember[$i]); $j++)
+                <form action="{{route('deleteAssignedMember')}}" method="POST">
+                  @csrf
+                  @method('delete')
+                  {{ $assignedMember[$i][$j]->name }}
+                  <input type="hidden" name="user_id" value="{{ $assignedMember[$i][$j]->id }}">
+                  <input type="hidden" name="task_id" value="{{ $tasks[$i]->id }}">
+                  <c><button type="submit" class="">Delete</button></c>
+                </form>
+              @endfor
+            </h2>
+            @if (count($nonAssignedMember[$i])>0)
+            <h2>Assign Other Members</h2>
+            <form action="{{ route('addAssignedMembers', ['id' => $tasks[$i]->id]) }}" method="POST">
+              @csrf
+              <div class="">
+                @for ($j = 0; $j < count($nonAssignedMember[$i]); $j++)
+                  <label><input type="checkbox" name=assign[] value='{{$nonAssignedMember[$i][$j]->id}}'>{{ $nonAssignedMember[$i][$j]->name }}</label>
+                @endfor
+              </div>
+              <div class="">
+                <button type="submit" class="">Assign Members</button>
+              </div>
+            </form>
+            @elseif (count($nonAssignedMember[$i]) === 0)
+
+            @endif
+          </div>
+          @endfor
         </div>
 
         <div class="actions">
@@ -141,71 +222,6 @@
               </div>
             </form>
           </div>
-
-          @for ($i = 0; $i < count($tasks); $i++)
-          <div class="task-container">
-            <h2>{{ $tasks[$i]->name }}<a>Re-Assign</a></h2>
-            <p>{{ $tasks[$i]->description }}<b>
-            @if ($tasks[$i]->status === 'Ongoing')
-            <form action="{{route('checkTask', ['id' => $tasks[$i]->id])}}" method="post">
-              @csrf
-              @method('patch')
-              <button type="submit" class="">Check</button>
-            </form>
-            @elseif ($tasks[$i]->status === 'Done')
-            <form action="{{route('uncheckTask', ['id' => $tasks[$i]->id])}}" method="post">
-              @csrf
-              @method('patch')
-              <button type="submit" class="">Uncheck</button>
-            </form>
-            @endif
-            </b></p>
-            <h2>Deadline : {{ \Carbon\Carbon::parse($tasks[$i]->date)->format('d/m/Y') }}</h2>
-            <h2>Priority : {{ $tasks[$i]->priority }}</h2>
-            <h2>Status: {{ $tasks[$i]->status }}</h2>
-            <h2>Assigned to :
-            @for ($j = 0; $j < count($assignedMember[$i]); $j++)
-              "{{ $assignedMember[$i][$j]->name }}"
-            @endfor
-            <c><form action="{{route('deleteTask', ['id' => $tasks[$i]->id])}}" method="post">
-              @csrf
-              @method('delete')
-              <button type="submit" class="">Delete</button>
-            </form></c>
-            </h2>
-          </div>
-          <div class="task-container">
-            <h2>{{ $tasks[$i]->name }} Assigned Members :</h2>
-            <h2>
-              @for ($j = 0; $j < count($assignedMember[$i]); $j++)
-                <form action="{{route('deleteAssignedMember')}}" method="POST">
-                  @csrf
-                  @method('delete')
-                  {{ $assignedMember[$i][$j]->name }}
-                  <input type="hidden" name="user_id" value="{{ $assignedMember[$i][$j]->id }}">
-                  <input type="hidden" name="task_id" value="{{ $tasks[$i]->id }}">
-                  <c><button type="submit" class="">Delete</button></c>
-                </form>
-              @endfor
-            </h2>
-            @if (count($nonAssignedMember[$i])>0)
-            <h2>Assign Other Members</h2>
-            <form action="{{ route('addAssignedMembers', ['id' => $tasks[$i]->id]) }}" method="POST">
-              @csrf
-              <div class="">
-                @for ($j = 0; $j < count($nonAssignedMember[$i]); $j++)
-                  <label><input type="checkbox" name=assign[] value='{{$nonAssignedMember[$i][$j]->id}}'>{{ $nonAssignedMember[$i][$j]->name }}</label>
-                @endfor
-              </div>
-              <div class="">
-                <button type="submit" class="">Assign Members</button>
-              </div>
-            </form>
-            @elseif (count($nonAssignedMember[$i]) === 0)
-
-            @endif
-          </div>
-          @endfor
 
           <div class="button">
             <a><img src="/assets/add_logo.png" /></a>

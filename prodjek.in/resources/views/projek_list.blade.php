@@ -12,6 +12,7 @@
     <link href="{{ asset('css/style_projek_list.css') }}" rel="stylesheet" type="text/css" >
   </head>
   <body>
+    <!-- Navbar -->
     <div class="sidebar">
         <header><img src="assets/logo_white.png" /><b>Prodjek.In</b></header>
 
@@ -27,14 +28,36 @@
         </form></li>
         </ul>
       </div>
+      <!-- Navbar End -->
 
+    <!-- Hero -->
+    <div class="mainContainer">
     <div>
       <h1>Good Morning, {{ auth()->user()->name }}!</h1>
     </div>
-
     <div class="container">
-      <!-- Minta tolong dibenerin sizing nya (figo) -->
-      <div class="boxadd">
+    @for ($i = 0; $i < count($projects); $i++)
+    
+      
+      <div class="box1">
+      <a href="{{route('viewDetails', ['id' => $projects[$i]->workspace_id])}}">
+          <h2>{{ $projects[$i]->workspace->name }}</h2>
+          <p class="task">Team</p>
+          <p class="task_num"> <b class="num">{{ $taskAmount[$i] }} </b></p>
+          <p class="task_T">Tasks</p>
+          <p class="bold"><br />{{ $projects[$i]->workspace->team_name }}</p>
+          <p><br />Role</p>
+          <p class="bold"><br />{{ $projects[$i]->role }}</p>
+          <p><br />Detail</p>
+          <p class="bold"><br />{{ $projects[$i]->workspace->project_detail }}</p>
+      </a>
+      </div>
+    
+   
+    @endfor
+    </div>
+     <!-- Minta tolong dibenerin sizing nya (figo) -->
+    <div class="boxadd">
         <h2>Add New Project</h2>
         <form action="{{ route('createProject') }}" method="POST" enctype="multipart/form-data" class="">
           @csrf
@@ -69,23 +92,6 @@
               <button type="submit" class="">Add Project</button>
           </div>
         </form>
-      </div>
-
-      @for ($i = 0; $i < count($projects); $i++)
-      <a href="{{route('viewDetails', ['id' => $projects[$i]->workspace_id])}}">
-        <div class="box1">
-          <h2>{{ $projects[$i]->workspace->name }}</h2>
-          <p class="task">Team</p>
-          <p class="task_T">Tasks</p>
-          <p class="task_num"> {{ $taskAmount[$i] }} </p>
-          <p class="bold"><br />{{ $projects[$i]->workspace->team_name }}</p>
-          <p><br />Role</p>
-          <p class="bold"><br />{{ $projects[$i]->role }}</p>
-          <p><br />Detail</p>
-          <p class="bold"><br />{{ $projects[$i]->workspace->project_detail }}</p>
-        </div>
-      </a>
-      @endfor
     </div>
   </body>
 </html>

@@ -2,87 +2,130 @@
 
 *{
     margin: 0;
-    font-family: "Poppins";
-}
-
-ul {
-    list-style-type: none;
-    margin: 0;
     padding: 0;
+    font-family: "Poppins";
+    list-style: none;
+    text-decoration: none;
+}
+
+body{
+    background-color: #DADDEA;
+}
+/* NavBar */
+
+.sidebar{
+    position:fixed;
+    left: 0;
     width: 16%;
-    background-color: #5571FE;
-    position: fixed;
-    height: 100%;
-    overflow: auto;
-    float: left;
+    height: 100vh;
+    background: #5571FE;
+    flex-direction: column;
+    align-items: center;
 }
 
-li h1 {
+.sidebar header{
+    margin-top: 25px;
+    margin-bottom: 75px;
     font-size: 30px;
-    color: white;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    color: #FAF7F0;
+    justify-content: center;
+    line-height: 70px;
+    user-select: none;
+    align-items: center;
+    display: flex;
+}
+.sidebar header img {
+    /* padding-left: 15px; */
+    padding-right: 20px;
+    height: 60px;
+    width: 60px;
 }
 
-li h1 img {
-    padding-left: 10px;
-    padding-right: 10px;
+.sidebar ul a{
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 65px;
+    color: #FAF7F0;
+    font-size: 30px;
+    padding-left: 40px;
+    box-sizing: border-box;
+    transition: .3s;
+}
+
+.sidebar li img {
     height: 30px;
     width: 30px;
+    padding-right: 20px;
 }
 
-li img {
-    height: 25px;
-    width: 25px;
-    padding-right: 10px;
+.sidebar li a{
+    align-items: center;
+    display: flex;
+    /* justify-content: center; */
 }
 
-li a {
-    display: block;
-    color: white;
-    padding: 8px 16px;
-    text-decoration: none;
-    font-size: 25px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-  
-li a.active {
-    background-color: #8699fa;
-    color: white;
-}
-  
-li a:hover:not(.active) {
-    background-color: #8699fa;
+
+.sidebar ul{
+    height: 68%;
 }
 
-li b{
-    display: block;
-    color: white;
-    padding: 8px 16px;
-    text-decoration: none;
-    font-size: 25px;
-    margin-top: 350px;
-    margin-bottom: 15px;
-    font-weight: normal;
+.sidebar ul li:hover{
+    background-color: rgba(250, 247, 240, 30%);
+    transition: .3s;
 }
 
-div {
-    width: 89%;
-    float: right;
-    background-color: #daddea;
+.logOut{
+    display: block; 
+    width: 100%; 
+    box-sizing: border-box;
+    transition: .3s;
+    margin-top: 500px;
+    height: 100%; 
 }
 
-div h1 {
-    margin-left: 5%;
-    padding: 2%;
-    font: 36px;
-    margin-bottom: 1%;
-    background-color: #daddea;
+.logOut button{
+    line-height: 65px;
+    padding-left: 40px;
+    color: #FAF7F0;
+    display: flex;
+    align-items: center;
+    background-color: #5571FE;
+    border: none;
+    font-size: 30px;
+    width: 100%;
+    height: 100%;
 }
 
-.prodjek-page {
+.logOut button img{
+    height: 30px;
+    width: 30px;
+    padding-right: 20px;
+}
+
+.logOut button:hover{
+    background-color: rgba(250, 247, 240, 30%);
+    transition: .3s;
+    cursor: pointer;
+}
+
+/* Navbar End */
+
+.mainContainer {
+    margin-left: 300px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.Message{
     margin: 2%;
+}
+
+/* Project Detail */
+.Card {
+    margin: 0% 2% 2% 2%;
+    padding: 30px;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 25px;
@@ -91,18 +134,16 @@ div h1 {
     align-content: center;
 }
 
-.prodjek-page h1 {
+.Card h1 {
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
-    align-items: center;
-    background-color: white;
-    border-radius: 25px;
     text-align: center;
-    margin-right: 5%;
+    padding-bottom: 10px;
 }
 
 .details {
+    padding-top: 10px;
     margin-right: 5%;
     background-color: white;
 }
@@ -120,75 +161,113 @@ div h1 {
     background-color: white;
 }
 
+/* Project Detail END*/
+
+/* Project Task */
+
 .task-container {
-    margin-right: 11%;
-    background-color: white;
+    width: 100%;
     border: 3px solid black;
-    border-radius: 25px;
+    border-radius: 12.5px;
     text-align: left;
-    padding: 3px;
     margin-bottom: 2%;
+    padding-top: 1%;
+    padding-bottom: 1%;
 }
 
-.task-container p {
-    text-align: left;
-    margin-left: 0;
-    padding: 2%;
-    margin: 1%;
-    margin-bottom: 2%;
+.header{
+    display: flex;
+    justify-content: space-between;
+    /* padding-top: 1%; */
+    padding-left: 2%;
+    padding-right: 2%;
+    align-items: center;
 }
 
-.task-container h2 {
-    text-align: left;
-    margin-left: 0;
+.header h2 {
+    /* text-align: left; */
+    /* margin-left: 0; */
     font-weight: bold;
-    padding: 2%;
-}
-
-.task-container a {
-    text-align: center;
-    float: right;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-left: 5%;
-    padding-right: 5%;
-    color: #1C33AA;
-    background-color: #BCCEF8;
-    border-radius: 5px;
-    font-weight: normal;
-    width: 150px;
-    height: 43px;
-}
-
-.task-container b {
-    text-align: center;
     font-size: 24px;
-    float: right;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-left: 4%;
-    padding-right: 5%;
-    color: #1C33AA;
-    background-color: #BCF8CD;
-    border-radius: 5px;
-    font-weight: normal;
-    width: 150px;
-    height: 43px;
+    
 }
 
-.task-container c {
-    text-align: center;
-    float: right;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-left: 5%;
-    padding-right: 5%;
+.header p {
+    border-radius: 6px;
+    background-color: #BCCEF8;
     color: #1C33AA;
+    font-weight: bold;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 20%;
+    text-align: center;
+}
+
+.body {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    align-items: center;
+}
+
+.body form{
+    width: 20%;
+}
+
+.body button{
+    padding: 10px 80px;
+    font-weight: bold;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    text-align: center;
+    border-radius: 6px;
+    background-color: #BCF8CD;
+    color: #1C33AA;
+    cursor: pointer;
+    border-style: none;
+}
+
+.body p{
+    font-weight: medium;
+    font-size: 24px;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    align-items: center;
+}
+
+.footer h2{
+    /* font-weight: medium; */
+    font-size: 18px;
+}
+
+.footer form{
+    width: 20%;
+}
+
+.footer button{
+    padding: 10px 80px;
+    font-weight: bold;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    text-align: center;
+    border-radius: 6px;
     background-color: #F8BCBC;
-    border-radius: 5px;
-    font-weight: normal;
-    width: 150px;
-    height: 43px;
+    color: #1C33AA;
+    cursor: pointer;
+    border-style: none;
 }
 
 .button {
@@ -201,3 +280,5 @@ div h1 {
     width: 80px;
     height: 80px;
 }
+
+/* Project Task END*/
