@@ -12,34 +12,21 @@
     <link href="{{ asset('css/style_projek_list.css') }}" rel="stylesheet" type="text/css" >
   </head>
   <body>
-    <ul>
-      <li>
-        <h1><img src="assets/logo_white.png" />Prodjek.in</h1>
-      </li>
-      <li>
-        <a href="/home"
-          ><img src="assets/dashboard_logo.png" /> Dashboard</a
-        >
-      </li>
-      <li>
-        <a href="#"><img src="assets/profile_logo.png" /> Profile</a>
-      </li>
-      <li>
-        <a class="active" href="/project-list"
-          ><img src="assets/prodjek_logo.png" /> Prodjek</a
-        >
-      </li>
-      <ul class="ul2">
-        <li>
-        <b><form action="/logout" method="POST">@csrf
-          <img src="/assets/logout_logo.png" />
+    <div class="sidebar">
+        <header><img src="assets/logo_white.png" /><b>Prodjek.In</b></header>
+
+        <ul class="list1">
+          <li><a href="/home"><img src="assets/dashboard_logo.png" />Dashboard</a></li>
+          <li><a href="#"><img src="assets/profile_logo.png" />Profile</a></li>
+          <li><a href="/project-list"><img src="assets/prodjek_logo.png" />Prodjek</a></li>
+          <li><form action="/logout" method="POST" class="logOut">
+            @csrf
             <button type="submit" class="dropdown-item">
-                Logout
+            <img src="/assets/logout_logo.png" />Logout
             </button>
-        </form></b>
-        </li>
-      </ul>
-    </ul>
+        </form></li>
+        </ul>
+      </div>
 
     <div>
       <h1>Good Morning, {{ auth()->user()->name }}!</h1>

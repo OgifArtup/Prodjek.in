@@ -22,43 +22,15 @@
           <li><a href="/home"><img src="assets/dashboard_logo.png" />Dashboard</a></li>
           <li><a href="#"><img src="assets/profile_logo.png" />Profile</a></li>
           <li><a href="/project-list"><img src="assets/prodjek_logo.png" />Prodjek</a></li>
+          <li><form action="/logout" method="POST" class="logOut">
+            @csrf
+            <button type="submit" class="dropdown-item">
+            <img src="/assets/logout_logo.png" />Logout
+            </button>
+        </form></li>
         </ul>
-
-        <a href="#" class="logOut"><b><form action="/logout" method="POST">@csrf
-          <img src="/assets/logout_logo.png" class="logout"/>
-            <button type="submit" class="dropdown-item">
-                Logout
-            </button>
-        </form></b></a>
       </div>
-    <!-- <ul>
-      <li>
-        <h1><img src="assets/logo_white.png" />Prodjek.in</h1>
-      </li>
-      <li>
-        <a class="active" href="/home"
-          ><img src="assets/dashboard_logo.png" /> Dashboard</a
-        >
-      </li>
-      <li>
-        <a href="#"><img src="assets/profile_logo.png" /> Profile</a>
-      </li>
-      <li>
-        <a href="/project-list"
-          ><img src="assets/prodjek_logo.png" /> Prodjek</a
-        >
-      </li>
-      <ul class="ul2">
-        <li>
-        <b><form action="/logout" method="POST">@csrf
-          <img src="/assets/logout_logo.png" />
-            <button type="submit" class="dropdown-item">
-                Logout
-            </button>
-        </form></b>
-        </li>
-      </ul>
-    </ul> -->
+    
 
     <!-- NavBar End -->
 

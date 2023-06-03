@@ -22,7 +22,7 @@
 
 .sidebar header{
     margin-top: 25px;
-    margin-bottom: 25px;
+    margin-bottom: 75px;
     font-size: 30px;
     color: #FAF7F0;
     justify-content: center;
@@ -51,15 +51,20 @@
 }
 
 .sidebar li img {
-    height: 25px;
-    width: 25px;
-    padding-right: 10px;
+    height: 30px;
+    width: 30px;
+    padding-right: 20px;
+}
+
+.sidebar li a{
+    align-items: center;
+    display: flex;
+    /* justify-content: center; */
 }
 
 
-
 .sidebar ul{
-    height: 50%;
+    height: 68%;
 }
 
 .sidebar ul li:hover{
@@ -68,23 +73,39 @@
 }
 
 .logOut{
-    font-size: 30px;
-    color: #FAF7F0;
-    text-align: center;
-    line-height: 70px;
-    padding-left: 40px;
-}
-
-.logOut:hover{
-    font-size: 34px;
+    display: block; 
+    width: 100%; 
+    box-sizing: border-box;
     transition: .3s;
+    margin-top: 500px;
+    height: 100%; 
 }
 
-.logout{
-    height: 25px;
-    width: 25px;
-    padding-right: 10px;
+.logOut button{
+    line-height: 65px;
+    padding-left: 40px;
+    color: #FAF7F0;
+    display: flex;
+    align-items: center;
+    background-color: #5571FE;
+    border: none;
+    font-size: 30px;
+    width: 100%;
+    height: 100%;
 }
+
+.logOut button img{
+    height: 30px;
+    width: 30px;
+    padding-right: 20px;
+}
+
+.logOut button:hover{
+    background-color: rgba(250, 247, 240, 30%);
+    transition: .3s;
+    cursor: pointer;
+}
+
 
 body{
     background-color: #DADDEA;
