@@ -29,7 +29,7 @@
         </form></li>
         </ul>
       </div>
-    
+
 
     <!-- NavBar End -->
 
@@ -38,7 +38,7 @@
       <div class="Message">
         <h1>Good Morning, {{ auth()->user()->name }}!</h1>
       </div>
-      
+
 
       <div class="Card">
         <h1>{{ $workspace->name }}</h1>
@@ -61,21 +61,21 @@
           <p>{{ $workspace->project_detail }}</p>
           <br/>
           <h2>Invite Member</h2>
-          
+
           <div class="searchbar">
           <form action="{{ route('inviteMember', ['id' => $workspace->id]) }}" method="POST" enctype="multipart/form-data" class="">
             @csrf
-            
+
                 <input name="username" type="text" class="" placeholder="Add Username">
                 @error('name')
                     <div class="">
                         {{ $message }}
                     </div>
                 @enderror
-            
-            
+
+
                 <button type="submit">Add</button>
-            
+
           </form>
 </div>
         </div>
@@ -122,10 +122,10 @@
               @method('delete')
               <button type="submit" class="">Delete</button>
             </form>
-            
+
             </div>
           </div>
-          
+
 
           <div class="task-container">
             <h2>{{ $tasks[$i]->name }} Assigned Members :</h2>
