@@ -47,7 +47,7 @@ class WorkspaceController extends Controller
     public function updateProfile(Request $request){
         $profile = User::find(Auth::user()->id);
         $profile -> update([
-            'name' => $request->Username,
+            'username' => $request->Username,
         ]);
         return redirect(route('viewProfile'));
     }
@@ -56,9 +56,9 @@ class WorkspaceController extends Controller
         $profile = User::find(Auth::user()->id);
         $hashedPassword = User::find(Auth::user()->id)->password;
         if (Hash::check($request->lastPass, $hashedPassword)) {
-            if(($request->newPass == $request->confPass)&&($request->newPass!=null)){
+            if(($request->newPass == $request->confPass && $request->newPass!=null)){
                 $profile -> update([
-                    'password' => $request->newPass,
+                    'password' => bcrypt($request->newPass),
                 ]);
             }
         }
