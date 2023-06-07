@@ -43,7 +43,6 @@
           <h4 style="color: #aa1c1c"> {{$undoneTask}} </h4>
           <p>Tasks Needed to be Completed</p>
         </div>
-
         <div class="card">
           <h3>Done Task</h3>
           <h4 style="color: #aa931c"> {{$doneTask}} </h4>
@@ -60,33 +59,44 @@
       <h1>New Notifications</h1>
 
       <div class="notif-container">
+        @foreach ($notifications as $notification)
         <div class="notif">
-          <h1>Task Name</h1>
-          <h2>Project Name</h2>
-          <h3>- Message</h3>
+          <h1>{{ $notification->workspace->name }}</h1>
+          <h2>{{ $notification->detail }}</h2>
           <div class="notif-img"><img src="assets/close_logo.png" /></div>
         </div>
+        @endforeach
+        @if (count($notifications) == 0)
+          <div class="notif">
+          <h2>No New Notification</h2>
+        </div>
+        @endif
+      </div>
 
-        <div class="notif">
-          <h1>Task Name</h1>
-          <h2>Project Name</h2>
-          <h3>- Message</h3>
-          <div class="notif-img"><img src="assets/close_logo.png" /></div>
-        </div>
+      <h1>Invitations</h1>
 
+      <div class="notif-container">
+        @foreach ($invitations as $invitation)
         <div class="notif">
-          <h1>Task Name</h1>
-          <h2>Project Name</h2>
-          <h3>- Message</h3>
+          <h1>{{ $invitation->workspace->name }}</h1>
+          <h2>{{ $invitation->detail }}</h2>
           <div class="notif-img"><img src="assets/close_logo.png" /></div>
+          <form action="{{route('deleteNotification', ['id' => $invitation->id])}}" method="post">
+            @csrf
+            @method('delete')
+            <button action="/decline-invitation" type="submit" class="deleteBttn">Decline</button>
+          </form>
+          <form action="{{route('acceptInvitation', ['id' => $invitation->id])}}" method="post">
+            @csrf
+            <button action="/accept-invitation" type="submit" class="deleteBttn">Accept</button>
+          </form>
         </div>
-
-        <div class="notif">
-          <h1>Task Name</h1>
-          <h2>Project Name</h2>
-          <h3>- Message</h3>
-          <div class="notif-img"><img src="assets/close_logo.png" /></div>
+        @endforeach
+        @if (count($notifications) == 0)
+          <div class="notif">
+          <h2>No New Invitation</h2>
         </div>
+        @endif
       </div>
     </div>
 

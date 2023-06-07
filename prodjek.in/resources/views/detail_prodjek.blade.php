@@ -66,16 +66,13 @@
           <form action="{{ route('inviteMember', ['id' => $workspace->id]) }}" method="POST" enctype="multipart/form-data" class="">
             @csrf
 
-                <input name="username" type="text" class="" placeholder="Add Username">
-                @error('name')
+                <input name="email" type="text" class="" placeholder="Add User's Email">
+                @error('email')
                     <div class="">
                         {{ $message }}
                     </div>
                 @enderror
-
-
                 <button type="submit">Add</button>
-
           </form>
 </div>
         </div>

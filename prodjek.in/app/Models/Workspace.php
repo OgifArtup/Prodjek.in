@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Task;
 use App\Models\WorkspaceList;
+use App\Models\Notification;
 
 class Workspace extends Model
 {
@@ -24,5 +25,9 @@ class Workspace extends Model
 
     public function workspaceList(){
         return $this->hasMany(WorkspaceList::class, 'id');
+    }
+    
+    public function notification(){
+        return $this->hasMany(Notification::class, 'id');
     }
 }

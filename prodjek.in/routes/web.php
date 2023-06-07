@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WorkspaceController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,9 @@ Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/home', [WorkspaceController::class, 'viewHome'])->name('viewHome');
+    Route::post('/accept-invitation/{id}', [NotificationController::class, 'acceptInvitation'])->name('acceptInvitation');
+    Route::delete('/decline-invitation/{id}', [NotificationController::class, 'deleteNotification'])->name('deleteNotification');
+
     Route::get('/first-time', [GoogleController::class, 'firstTimeLogin'])->name('firstTimeLogin');
     Route::post('/make-pass', [GoogleController::class, 'makePassword'])->name('makePassword');
 

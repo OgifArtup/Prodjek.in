@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 23, 2023 at 02:20 AM
+-- Generation Time: Jun 07, 2023 at 03:13 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -33,14 +33,6 @@ CREATE TABLE `assignment_lists` (
   `task_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `assignment_lists`
---
-
-INSERT INTO `assignment_lists` (`id`, `user_id`, `task_id`) VALUES
-(1, 1, 1),
-(4, 2, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -66,7 +58,26 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (6, '2023_05_12_115330_create__assignment_list_table', 1),
 (7, '2023_05_12_124248_create__workspace_list_table', 1),
 (8, '2023_05_12_124303_create_tasks_table', 1),
-(9, '2023_05_12_124313_create__assignment_list_table', 1);
+(9, '2023_05_12_124313_create__assignment_list_table', 1),
+(10, '2023_06_07_125210_create_notifications_table', 1),
+(11, '2023_06_07_125542_create_notifications_table', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `workspace_id` bigint(20) UNSIGNED NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `detail` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -103,13 +114,6 @@ CREATE TABLE `tasks` (
   `status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `tasks`
---
-
-INSERT INTO `tasks` (`id`, `workspace_id`, `name`, `description`, `due_date`, `priority`, `status`) VALUES
-(1, 1, 'Test Task', 'User can do something', '0000-00-00', 'Urgent', 'Ongoing');
-
 -- --------------------------------------------------------
 
 --
@@ -129,14 +133,6 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `name`, `username`, `email`, `google_id`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Test User', 'TestUser1', 'test@gmail.com', '123456789012345678901', NULL, '$2y$10$6G1GnXIwxOWlcTcXcoM5w.FCFhSAHJRB0TnEgzNKrjht.WeDa3onO', NULL, '2023-05-19 04:37:55', '2023-05-19 04:37:55'),
-(2, 'Test User 2', 'TestUser2', 'test2@gmail.com', '420420420420420420420', NULL, '$2y$10$jKTmhqTUpOXOCyJxmEGxwu4gO9OW93rIWjkxXJwnVr.JJ2X2EaRU6', NULL, '2023-05-19 04:37:55', '2023-05-19 04:37:55');
-
 -- --------------------------------------------------------
 
 --
@@ -150,13 +146,6 @@ CREATE TABLE `workspaces` (
   `project_detail` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `workspaces`
---
-
-INSERT INTO `workspaces` (`id`, `name`, `team_name`, `project_detail`) VALUES
-(1, 'Test Project', 'Test Team', 'This project is for testing purposes');
-
 -- --------------------------------------------------------
 
 --
@@ -169,14 +158,6 @@ CREATE TABLE `workspace_lists` (
   `workspace_id` bigint(20) UNSIGNED NOT NULL,
   `role` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `workspace_lists`
---
-
-INSERT INTO `workspace_lists` (`id`, `user_id`, `workspace_id`, `role`) VALUES
-(1, 1, 1, 'Manager'),
-(2, 2, 1, 'Manager');
 
 --
 -- Indexes for dumped tables
@@ -195,6 +176,14 @@ ALTER TABLE `assignment_lists`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `workspace_id` (`workspace_id`);
 
 --
 -- Indexes for table `personal_access_tokens`
@@ -241,13 +230,19 @@ ALTER TABLE `workspace_lists`
 -- AUTO_INCREMENT for table `assignment_lists`
 --
 ALTER TABLE `assignment_lists`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `notifications`
+--
+ALTER TABLE `notifications`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -259,25 +254,25 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `workspaces`
 --
 ALTER TABLE `workspaces`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `workspace_lists`
 --
 ALTER TABLE `workspace_lists`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -289,6 +284,13 @@ ALTER TABLE `workspace_lists`
 ALTER TABLE `assignment_lists`
   ADD CONSTRAINT `assignment_lists_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `assignment_lists_ibfk_2` FOREIGN KEY (`task_id`) REFERENCES `tasks` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD CONSTRAINT `notifications_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `notifications_ibfk_2` FOREIGN KEY (`workspace_id`) REFERENCES `workspaces` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tasks`
