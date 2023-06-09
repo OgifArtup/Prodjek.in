@@ -48,7 +48,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/view-profile', [WorkspaceController::class, 'viewProfile'])->name('viewProfile');
     Route::post('/update-profile', [WorkspaceController::class, 'updateProfile'])->name('updateProfile');
     Route::post('/update-password', [WorkspaceController::class, 'updatePassword'])->name('updatePassword');
-    
+
     Route::get('/project-list', [WorkspaceController::class, 'viewProjects'])->name('viewProjects');
     Route::post('/add-project', [WorkspaceController::class, 'createProject'])->name('createProject');
 

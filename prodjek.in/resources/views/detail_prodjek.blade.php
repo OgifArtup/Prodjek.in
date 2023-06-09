@@ -166,7 +166,6 @@
             <div class="wrapper">
               <div class="content">
                 <div class="container">
-                  <form>
                     <div class="actions">
                       <div class="task-container">
                         <form action="{{ route('createTask', ['id' => $workspace->id]) }}" method="POST" enctype="multipart/form-data" class="">
@@ -231,7 +230,6 @@
                         </form>
                       </div>
                     </div>
-                  </form>
                 </div>
               </div>
             </div>

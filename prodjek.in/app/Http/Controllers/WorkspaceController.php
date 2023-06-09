@@ -177,6 +177,7 @@ class WorkspaceController extends Controller
 
     public function deleteTask($id){
         $task = Task::find($id);
+        AssignmentList::where("task_id", $task->id)->delete();
         Task::where("id", $task->id)->delete();
         Task::destroy($id);
         return back();
