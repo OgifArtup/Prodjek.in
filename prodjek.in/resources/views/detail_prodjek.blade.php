@@ -15,8 +15,7 @@
     <!-- NavBar -->
 
     <div class="sidebar">
-        <header><img src="/assets/logo_white.png" /><b>Prodjek.In</b></header>
-
+      <header><img src="/assets/logo_white.png" /><b>Prodjek.In</b></header>
         <ul class="list1">
           <li><a href="/home"><img src="/assets/dashboard_logo.png" />Dashboard</a></li>
           <li><a href="/view-profile"><img src="/assets/profile_logo.png" />Profile</a></li>
@@ -28,7 +27,7 @@
             </button>
         </form></li>
         </ul>
-      </div>
+    </div>
 
 
     <!-- NavBar End -->
@@ -73,7 +72,7 @@
                 {{ session('message') }}
               </div>
           @endif
-</div>
+    </div>
         </div>
         </div>
 
@@ -157,74 +156,86 @@
           @endfor
         </div>
 
-        <div class="actions">
-          <!-- Note ini untuk sementara -->
-          <div class="task-container">
-            <form action="{{ route('createTask', ['id' => $workspace->id]) }}" method="POST" enctype="multipart/form-data" class="">
-              @csrf
-              <div class="">
-                  <input name="name" type="text" class="" placeholder="Task Name" value="{{ old('name') }}">
-                  @error('name')
-                      <div class="">
-                          {{ $message }}
-                      </div>
-                  @enderror
-              </div>
-
-              <div class="">
-                  <input name="description" type="text" class="" placeholder="Task Description" value="{{ old('description') }}">
-                  @error('description')
-                      <div class="">
-                          {{ $message }}
-                      </div>
-                  @enderror
-              </div>
-
-              <div class="">
-                  <label for="due_date">Due Date</label>
-                  <input name="due_date" type="date" class="" value="{{ old('due_date') }}">
-                  @error('due_date')
-                      <div class="">
-                          {{ $message }}
-                      </div>
-                  @enderror
-              </div>
-
-              <div class="">
-                <select name="priority" value="{{ old('priority') }}">
-                  <option value="Important">Important</option>
-                  <option value="Urgent">Urgent</option>
-                  <option value="Normal">Normal</option>
-                  <option value="Low">Low</option>
-                </select>
-                @error('priority')
-                    <div class="">
-                        {{ $message }}
-                    </div>
-                @enderror
-              </div>
-
-              <div class="">
-                <label for="assign[]">Assign To</label>
-                @foreach ($members as $member)
-                  <label><input type="checkbox" name=assign[] value='{{$member->user->id}}'>{{$member->user->name}}</label>
-                @endforeach
-                @error('assign')
-                    <div class="">
-                        {{ $message }}
-                    </div>
-                @enderror
-              </div>
-
-              <div class="">
-                  <button type="submit" class="">Add Task</button>
-              </div>
-            </form>
-          </div>
+          <!-- changes start -->
 
           <div class="button">
-            <a><img src="/assets/add_logo.png" /></a>
+            <a href="#divOne"><img src="/assets/add_logo.png" /></a>
           </div>
+
+          <div class="overlay" id="divOne">
+            <div class="wrapper">
+              <div class="content">
+                <div class="container">
+                  <form>
+                    <div class="actions">
+                      <div class="task-container">
+                        <form action="{{ route('createTask', ['id' => $workspace->id]) }}" method="POST" enctype="multipart/form-data" class="">
+                          @csrf
+                          <div class="fields">
+                              <label>Task Name</label>
+                              <input name="name" type="text" class="" value="{{ old('name') }}">
+                              @error('name')
+                                  <div class="">
+                                      {{ $message }}
+                                  </div>
+                              @enderror
+                          </div>
+                          <div class="fields">
+                              <label>Task Description</label>
+                              <input name="description" type="text" class="" value="{{ old('description') }}">
+                              @error('description')
+                                  <div class="">
+                                      {{ $message }}
+                                  </div>
+                              @enderror
+                          </div>
+                          <div class="fields">
+                              <label for="due_date">Due Date</label>
+                              <input name="due_date" type="date" class="" value="{{ old('due_date') }}">
+                              @error('due_date')
+                                  <div class="">
+                                      {{ $message }}
+                                  </div>
+                              @enderror
+                          </div>
+                          <div class="fields">
+                            <label>Task Priority</label>
+                            <select name="priority" value="{{ old('priority') }}">
+                              <option value="Important">Important</option>
+                              <option value="Urgent">Urgent</option>
+                              <option value="Normal">Normal</option>
+                              <option value="Low">Low</option>
+                            </select>
+                            @error('priority')
+                                <div class="">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                          </div>
+                          <div class="fields">
+                            <label for="assign[]">Assign To</label><br>
+                            @foreach ($members as $member)
+                              <label><input type="checkbox" name=assign[] value='{{$member->user->id}}'>{{$member->user->name}}</label>
+                            @endforeach
+                            @error('assign')
+                                <div class="">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                          </div>
+                          <div class="buttons">
+                            <a class="redbutton" onclick="history.back()">Cancel</a>
+                            <button type="submit">Add Task</button>
+                          </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+	        </div>
         </div>
       </div>
     </div>
