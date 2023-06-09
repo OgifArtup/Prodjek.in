@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('user', function (Blueprint $table) {
-            $table->string('google_id')->after('email')->nullable();
+        Schema::table('notifications', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('workspace_id')->references('id')->on('workspaces');
         });
     }
 
@@ -21,8 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('user', function (Blueprint $table) {
-            $table->dropColumn('google_id');
-        });
+        Schema::dropIfExists('notifications');
     }
 };

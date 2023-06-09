@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WorkspaceController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,12 +39,19 @@ Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/home', [WorkspaceController::class, 'viewHome'])->name('viewHome');
+    Route::post('/accept-invitation/{id}', [NotificationController::class, 'acceptInvitation'])->name('acceptInvitation');
+    Route::delete('/decline-invitation/{id}', [NotificationController::class, 'deleteNotification'])->name('deleteNotification');
+
     Route::get('/first-time', [GoogleController::class, 'firstTimeLogin'])->name('firstTimeLogin');
     Route::post('/make-pass', [GoogleController::class, 'makePassword'])->name('makePassword');
+
+    Route::get('/view-profile', [WorkspaceController::class, 'viewProfile'])->name('viewProfile');
+    Route::post('/update-profile', [WorkspaceController::class, 'updateProfile'])->name('updateProfile');
+    Route::post('/update-password', [WorkspaceController::class, 'updatePassword'])->name('updatePassword');
     
     Route::get('/project-list', [WorkspaceController::class, 'viewProjects'])->name('viewProjects');
     Route::post('/add-project', [WorkspaceController::class, 'createProject'])->name('createProject');
-    
+
     Route::post('/invite-member/{id}', [WorkspaceController::class, 'inviteMember'])->name('inviteMember');
 
     Route::get('/project-details/{id}', [WorkspaceController::class, 'viewDetails'])->name('viewDetails');
@@ -51,7 +59,7 @@ Route::group(['middleware' => ['auth']], function(){
     Route::patch('/check-task/{id}', [WorkspaceController::class, 'checkTask'])->name('checkTask');
     Route::patch('/uncheck-task/{id}', [WorkspaceController::class, 'uncheckTask'])->name('uncheckTask');
     Route::delete('/delete-task/{id}', [WorkspaceController::class, 'deleteTask'])->name('deleteTask');
-    
+
     Route::post('/add-assigned-member/{id}', [WorkspaceController::class, 'addAssignedMembers'])->name('addAssignedMembers');
     Route::delete('/delete-assigned-member', [WorkspaceController::class, 'deleteAssignedMember'])->name('deleteAssignedMember');
 });

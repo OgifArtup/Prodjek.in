@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\WorkspaceList;
 use App\Models\AssignmentList;
+use App\Models\Notification;
 
 class User extends Authenticatable
 {
@@ -53,5 +54,9 @@ class User extends Authenticatable
 
     public function assignmentList(){
         return $this->hasMany(AssignmentList::class, 'id');
+    }
+
+    public function notification(){
+        return $this->hasMany(Notification::class, 'id');
     }
 }

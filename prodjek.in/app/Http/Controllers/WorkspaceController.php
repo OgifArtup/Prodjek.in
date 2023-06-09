@@ -11,6 +11,8 @@ use App\Models\WorkspaceList;
 use App\Models\Task;
 use App\Models\AssignmentList;
 use App\Models\User;
+use App\Models\Notification;
+use App\Http\Controllers\NotificationController;
 use Hash;
 
 class WorkspaceController extends Controller
@@ -36,7 +38,35 @@ class WorkspaceController extends Controller
             }
         }
 
-        return view('home', compact('projectAmount', 'undoneTask', 'doneTask'));
+        $notifications = Notification::where('type', 'notification')->where('user_id', Auth::user()->id)->get();
+        $invitations = Notification::where('type', 'invitation')->where('user_id', Auth::user()->id)->get();
+        return view('home', compact('projectAmount', 'undoneTask', 'doneTask', 'notifications', 'invitations'));
+    }
+
+    public function viewProfile(){
+        $profile = User::find(Auth::user()->id);
+        return view('view_profile', compact('profile'));
+    }
+
+    public function updateProfile(Request $request){
+        $profile = User::find(Auth::user()->id);
+        $profile -> update([
+            'username' => $request->Username,
+        ]);
+        return redirect(route('viewProfile'));
+    }
+
+    public function updatePassword(Request $request){
+        $profile = User::find(Auth::user()->id);
+        $hashedPassword = User::find(Auth::user()->id)->password;
+        if (Hash::check($request->lastPass, $hashedPassword)) {
+            if(($request->newPass == $request->confPass && $request->newPass!=null)){
+                $profile -> update([
+                    'password' => bcrypt($request->newPass),
+                ]);
+            }
+        }
+        return redirect(route('viewProfile'));
     }
 
     public function viewProjects(){
@@ -107,17 +137,14 @@ class WorkspaceController extends Controller
     }
 
     public function inviteMember(Request $request, $id){
-        $memberId = User::where('username', $request->username)->value('id');
+        $memberId = User::where('email', $request->email)->value('id');
         if(is_null($memberId))
         {
             return back();
         }
-        $workspaceList = WorkspaceList::create([
-            'user_id' => $memberId,
-            'workspace_id' => $id,
-            'role' => 'Member'
-        ]);
-
+        $project = Workspace::find($id);
+        $message = "You've been invited to " . $project->name . "'s Workspace.";
+        (new NotificationController)->createNotification($memberId, $id, 'invitation', $message, 'pending');
         return back();
     }
 
@@ -126,7 +153,7 @@ class WorkspaceController extends Controller
             'workspace_id' => $id,
             'name' => $request->name,
             'description' => $request->description,
-            'date' => $request->date,
+            'due_date' => $request->due_date,
             'priority' => $request->priority,
             'status' => 'Ongoing',
         ]);
@@ -136,6 +163,9 @@ class WorkspaceController extends Controller
                 'user_id' => $x,
                 'task_id' => $task->id,
             ]);
+
+            $message = 'New '. $task->priority. ' Task Assigned in '. $task->workspace->name . ' Workspace = ' . $task->name . ', ' . $task->description . '. Deadline on ' . $task->due_date;
+            (new NotificationController)->createNotification($x, $task->workspace->id, 'notification', $message, 'pending');
         }
 
         return back();
