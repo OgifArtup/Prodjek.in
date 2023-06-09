@@ -52,8 +52,8 @@
     width: 100%;
     line-height: 65px;
     color: #FAF7F0;
-    font-size: 30px;
-    padding-left: 40px;
+    font-size: 24px;
+    padding-left: 20px;
     box-sizing: border-box;
     transition: .3s;
     flex-wrap: wrap;
@@ -73,9 +73,8 @@
 
 
 .sidebar ul{
-    height: 68%;
-    /* display: flex;
-    flex-direction: column; */
+    height: 20%;
+    
 }
 
 .sidebar ul li:hover{
@@ -88,19 +87,19 @@
     width: 100%; 
     box-sizing: border-box;
     transition: .3s;
-    margin-top: 500px;
+    margin-top: 90%;
     height: 100%; 
 }
 
 .logOut button{
     line-height: 65px;
-    padding-left: 40px;
+    padding-left: 20px;
     color: #FAF7F0;
     display: flex;
     align-items: center;
     background-color: #5571FE;
     border: none;
-    font-size: 30px;
+    font-size: 24px;
     width: 100%;
     height: 100%;
 }
