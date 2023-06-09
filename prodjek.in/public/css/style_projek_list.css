@@ -8,29 +8,35 @@
     text-decoration: none;
     
 }
-
-body{
-    background-color: #DADDEA;
+.all{
+    display: flex;
+    flex-direction: row;
 }
+/* NavBar Laptop*/
 
-/* NavBar */
 .sidebar{
-    position:fixed;
-    left: 0;
-    width: 16%;
+    display:flex;
+    position: fixed ;
+    /* position:fixed; */
+    /* left: 0; */
+    width: 20%;
     height: 100vh;
+    padding: 0;
+    margin: 0;
     background: #5571FE;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
 }
 
 .sidebar header{
+    display: flex;
+    width: 100%;
     margin-top: 25px;
     margin-bottom: 75px;
-    font-size: 30px;
+    font-size: 32px;
     color: #FAF7F0;
     justify-content: center;
-    line-height: 70px;
+    /* line-height: 70px; */
     user-select: none;
     align-items: center;
     display: flex;
@@ -38,8 +44,8 @@ body{
 .sidebar header img {
     /* padding-left: 15px; */
     padding-right: 20px;
-    height: 60px;
-    width: 60px;
+    height: 50px;
+    width: 50px;
 }
 
 .sidebar ul a{
@@ -48,10 +54,11 @@ body{
     width: 100%;
     line-height: 65px;
     color: #FAF7F0;
-    font-size: 30px;
-    padding-left: 40px;
+    font-size: 24px;
+    padding-left: 20px;
     box-sizing: border-box;
     transition: .3s;
+    flex-wrap: wrap;
 }
 
 .sidebar li img {
@@ -68,7 +75,8 @@ body{
 
 
 .sidebar ul{
-    height: 68%;
+    height: 20%;
+    
 }
 
 .sidebar ul li:hover{
@@ -81,19 +89,19 @@ body{
     width: 100%; 
     box-sizing: border-box;
     transition: .3s;
-    margin-top: 500px;
+    margin-top: 90%;
     height: 100%; 
 }
 
 .logOut button{
     line-height: 65px;
-    padding-left: 40px;
+    padding-left: 20px;
     color: #FAF7F0;
     display: flex;
     align-items: center;
     background-color: #5571FE;
     border: none;
-    font-size: 30px;
+    font-size: 24px;
     width: 100%;
     height: 100%;
 }
@@ -110,16 +118,21 @@ body{
     cursor: pointer;
 }
 
-/* NavBar End */
 
+body{
+    background-color: #DADDEA;
+}
+
+/* Navbar EnD */
 
 /* Hero */
 .mainContainer{
-    /* background-color: #DADDEA; */
-    margin-left: 300px;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    width: 80%;
+    margin-left: 20%;
+    /* float: right; */
+    background-color: #daddea;
 }
 
 div h1 {

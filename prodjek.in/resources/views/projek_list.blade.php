@@ -13,6 +13,7 @@
   </head>
   <body>
    <!-- Navbar -->
+   <div class="all">
    <div class="sidebar">
     <header><img src="assets/logo_white.png" /><b>Prodjek.In</b></header>
 
@@ -93,5 +94,6 @@
           </div>
         </form>
     </div>
+</div>
   </body>
 </html>

@@ -13,7 +13,7 @@
   </head>
   <body>
     <!-- NavBar -->
-
+<div class ="all">
     <div class="sidebar">
       <header><img src="/assets/logo_white.png" /><b>Prodjek.In</b></header>
         <ul class="list1">
@@ -115,7 +115,7 @@
             <form action="{{route('deleteTask', ['id' => $tasks[$i]->id])}}" method="post">
               @csrf
               @method('delete')
-              <button type="submit" class="">Delete</button>
+              <button type="submit">Delete</button>
             </form>
 
             </div>
@@ -225,7 +225,7 @@
                           </div>
                           <div class="buttons">
                             <a class="redbutton" onclick="history.back()">Cancel</a>
-                            <button type="submit">Add Task</button>
+                            <button type="submit" class="buttona">Add Task</button>
                           </div>
                           </div>
                         </form>
@@ -238,6 +238,7 @@
 	        </div>
         </div>
       </div>
+</div>
     </div>
   </body>
 </html>

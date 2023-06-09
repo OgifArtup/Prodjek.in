@@ -14,7 +14,7 @@
   </head>
   <body>
     <!-- NavBar -->
-
+  <div class="all">
     <div class="sidebar">
         <header><img src="/assets/logo_white.png" /><b>Prodjek.In</b></header>
 
@@ -33,6 +33,7 @@
 
 
     <!-- NavBar End -->
+    <div class ="MainContainer">
 
     <div>
       <h1>Good Morning, {{ auth()->user()->name }}!</h1>
@@ -72,6 +73,7 @@
             <button type="submit" class="insertBttn">Update Password</button>
         </form>
     </div>
-
+</div>
+</div>
   </body>
 </html>

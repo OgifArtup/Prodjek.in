@@ -14,7 +14,8 @@
 /* NavBar Laptop*/
 
 .sidebar{
-    display: flex;
+    display:flex;
+    position: fixed ;
     /* position:fixed; */
     /* left: 0; */
     width: 20%;
@@ -121,19 +122,13 @@ body{
     background-color: #DADDEA;
 }
 
-.mainContainer{
-    margin-left: 300px;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    width: 100%;
-}
 
 /* Hero */
 .hero {
     display: flex;
     flex-direction: column;
     width: 80%;
+    margin-left: 20%;
     /* float: right; */
     background-color: #daddea;
 }
@@ -154,9 +149,11 @@ body{
     display: flex;
     flex-direction: column;
     width: 50%;
-    height: 100%;
+    /* height: 100%; */
+    /* flex-wrap: nowrap; */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     padding: 16px;
+    justify-content:space-between;
     background-color: white;
     border-radius: 25px;
     margin-left: 5%;
@@ -196,7 +193,7 @@ body{
     text-align: left;
     border-radius: 25px;
     background-color: white;
-    /* margin-bottom: 2%; */
+    margin-bottom: 2%;
 }
 
 .notif h1 {
