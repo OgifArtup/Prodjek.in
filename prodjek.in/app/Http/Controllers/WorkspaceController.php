@@ -138,9 +138,13 @@ class WorkspaceController extends Controller
 
     public function inviteMember(Request $request, $id){
         $memberId = User::where('email', $request->email)->value('id');
+        $checkMember = WorkspaceList::where('user_id', $memberId)->where('workspace_id', $id);
         if(is_null($memberId))
         {
-            return back();
+            return back()->with('message', 'User not found');
+        }
+        else if(!is_null($checkMember)){
+            return back()->with('message', 'User is already in the workspace.');
         }
         $project = Workspace::find($id);
         $message = "You've been invited to " . $project->name . "'s Workspace.";

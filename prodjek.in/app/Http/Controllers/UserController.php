@@ -21,7 +21,7 @@ class UserController extends Controller
             return redirect()->intended('/home');
         }     
 
-        return back()->with('errorLogin', 'Email or Password is invalid');
+        return back()->with('errorLogin', 'Email or Password is invalid!');
     }
 
     public function logout(Request $request){

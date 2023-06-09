@@ -65,15 +65,14 @@
           <div class="searchbar">
           <form action="{{ route('inviteMember', ['id' => $workspace->id]) }}" method="POST" enctype="multipart/form-data" class="">
             @csrf
-
-                <input name="email" type="text" class="" placeholder="Add User's Email">
-                @error('email')
-                    <div class="">
-                        {{ $message }}
-                    </div>
-                @enderror
-                <button type="submit">Add</button>
+            <input name="email" type="text" class="" placeholder="Add User's Email">
+            <button type="submit">Add</button>
           </form>
+          @if(session()->has('message'))
+              <div class="">
+                {{ session('message') }}
+              </div>
+          @endif
 </div>
         </div>
         </div>

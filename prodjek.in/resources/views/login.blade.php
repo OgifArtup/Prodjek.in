@@ -79,6 +79,11 @@
                         {{ $message }}
                     </div>
                 @enderror
+                @if(session()->has('errorLogin'))
+                  <div class="">
+                    {{ session('errorLogin') }}
+                  </div>
+                @endif
               </div>
               <br />
               <div class="input-field">
