@@ -14,7 +14,7 @@
 
   <body>
     <!-- NavBar -->
-
+    <div class="all">
     <div class="sidebar">
         <header><img src="assets/logo_white.png" /><b>Prodjek.In</b></header>
 
@@ -35,7 +35,7 @@
     <!-- NavBar End -->
 
     <!-- Hero -->
-    <div>
+    <div class="hero">
       <h1>Good Morning, {{ auth()->user()->name }}!</h1>
       <div class="container">
         <div class="card">
@@ -99,7 +99,7 @@
         @endif
       </div>
     </div>
-
+</div>
     <!-- Hero End -->
   </body>
 </html>
