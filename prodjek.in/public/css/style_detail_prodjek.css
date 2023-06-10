@@ -266,7 +266,7 @@ form label {
     font-family: "Poppins";
     font-weight: bolder;
 }
-input[type=text], select, textarea {
+input[type=text], textarea {
 	width: 100%;
 	padding: 12px;
 	border: 1px solid #ccc;

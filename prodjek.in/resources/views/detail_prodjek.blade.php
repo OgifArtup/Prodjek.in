@@ -156,7 +156,7 @@
           @endfor
         </div>
 
-          <!-- changes start -->
+          <!-- Add Task & pop up form -->
 
           <div class="button">
             <a href="#divOne"><img src="/assets/add_logo.png" /></a>
@@ -234,9 +234,10 @@
               </div>
             </div>
 	        </div>
+
         </div>
       </div>
-</div>
+      </div>
     </div>
   </body>
 </html>
