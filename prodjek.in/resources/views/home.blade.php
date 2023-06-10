@@ -63,7 +63,13 @@
         <div class="notif">
           <h1>{{ $notification->workspace->name }}</h1>
           <h2>{{ $notification->detail }}</h2>
-          <div class="notif-img"><img src="assets/close_logo.png" /></div>
+          <div class="notif-img">
+            <form action="{{route('deleteNotification', ['id' => $notification->id])}}" method="post">
+              @csrf
+              @method('delete')
+              <button action="/decline-invitation" type="submit"><img src="assets/close_logo.png" /></button>
+            </form>
+          </div>
         </div>
         @endforeach
         @if (count($notifications) == 0)

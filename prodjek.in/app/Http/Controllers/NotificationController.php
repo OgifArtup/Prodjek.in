@@ -37,5 +37,4 @@ class NotificationController extends Controller
         Notification::destroy($id);
         return back();
     }
-
 }
