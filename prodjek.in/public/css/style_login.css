@@ -86,7 +86,9 @@ nav img{
 
 .loginform{
     margin: 50px;
-    width : 50%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .loginform h1{
@@ -98,20 +100,26 @@ nav img{
 }
 
 .form{
-    margin-top: 25%;
+    /* margin-top: 25%; */
+    
+    display: flex;
+    flex-direction: column;
+    /* padding: 10px; */
 }
 
 .input-field{
 display: flex;
 flex-direction: column;
-position: relative;
+/* position: relative; */
 padding: 0 10px 0 16px;
 
 }
 
 .input{
+display: flex;
 height: 45px;
-width: 100%;
+/* width: 100%; */
+/* padding: 0px 10px 0px 10px; */
 background: transparent;
 border: none;
 border-bottom: 1px solid;
@@ -133,16 +141,45 @@ color :#1c33aa;
 .form p{
     text-align : center;
 }
+.formGoogle{
+    display: flex;
+    width: 100%;
+    /* flex-direction: column; */
+}
 
 .login_3rd_party{
+    display: flex;
     height: 45px;
-    width: 100%;
+    /* width: 100%; */
     background: transparent;
     border: none;
     border: 1px solid;
     font-family: "Poppins";
     margin-bottom: 20px;
     border-radius: 10px;
+}
+
+.googleLogin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* height: 100%; */
+    font-family: "Poppins";
+    font-size: 18px;
+    font-weight: 600;
+    background: transparent;
+    border: none;
+    /* background: none; */
+    /* border: none; */
+    gap: 10px;
+    cursor: pointer;
+}
+
+.googleLogin img{
+    display: flex;
+    height: 100%;
+    
 }
 
 .submit-google{
