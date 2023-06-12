@@ -9,6 +9,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <title>Home Page</title>
+    
+
     <link href="{{ asset('css/style_detail_prodjek.css') }}" rel="stylesheet" type="text/css" >
   </head>
   <body>
@@ -35,10 +37,8 @@
     <!-- Hero -->
     <div class="mainContainer">
       <div class="Message">
-        <h1>Good Morning, {{ auth()->user()->name }}!</h1>
+        <h1>Good Morning, {{ auth()->user()->username }}!</h1>
       </div>
-
-
       <div class="Card">
         <h1>{{ $workspace->name }}</h1>
         <hr>
@@ -72,23 +72,26 @@
                 {{ session('message') }}
               </div>
           @endif
-    </div>
         </div>
-        </div>
+      </div>
+</div>
 
         <div class="Card">
         <h1>Tasks</h1>
         <br>
         @for ($i = 0; $i < count($tasks); $i++)
+
           <div class="task-container">
             <div class="header">
             <h2>{{ $tasks[$i]->name }}</h2>
-            <p>Re-Assign</p>
+            <!-- <form action="#divTwo">
+              <button type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">Re-Assign</button>
+            </form> -->
             </div>
 
             <div class="body">
             <p>{{ $tasks[$i]->description }}</p>
-            @if ($tasks[$i]->status === 'Ongoing')
+            @if ($tasks[$i]->status === 'Ongoing')  
             <form action="{{route('checkTask', ['id' => $tasks[$i]->id])}}" method="post">
               @csrf
               @method('patch')
@@ -122,7 +125,7 @@
           </div>
 
 
-          <div class="task-container">
+          <!-- <div class="task-container">
             <h2>{{ $tasks[$i]->name }} Assigned Members :</h2>
             <h2>
               @for ($j = 0; $j < count($assignedMember[$i]); $j++)
@@ -152,9 +155,10 @@
             @elseif (count($nonAssignedMember[$i]) === 0)
 
             @endif
-          </div>
+          </div> -->
+          <hr>
           @endfor
-        </div>
+          
 
           <!-- Add Task & pop up form -->
 
@@ -235,9 +239,14 @@
             </div>
 	        </div>
 
+          
+
+
         </div>
       </div>
-      </div>
+
     </div>
-  </body>
+    
+    
+  </body >
 </html>

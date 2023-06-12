@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-*{
+* {
     margin: 0;
     padding: 0;
     font-family: "Poppins";
@@ -8,35 +8,34 @@
     text-decoration: none;
 }
 
-
 /* NavBar */
-.all{
+.all {
     display: flex;
     flex-direction: row;
 }
 /* NavBar Laptop*/
 
-.sidebar{
-    display:flex;
-    position: fixed ;
+.sidebar {
+    display: flex;
+    position: fixed;
     /* position:fixed; */
     /* left: 0; */
     width: 20%;
     height: 100vh;
     padding: 0;
     margin: 0;
-    background: #5571FE;
+    background: #5571fe;
     flex-direction: column;
     /* align-items: center; */
 }
 
-.sidebar header{
+.sidebar header {
     display: flex;
     width: 100%;
     margin-top: 25px;
     margin-bottom: 75px;
     font-size: 32px;
-    color: #FAF7F0;
+    color: #faf7f0;
     justify-content: center;
     /* line-height: 70px; */
     user-select: none;
@@ -50,16 +49,16 @@
     width: 50px;
 }
 
-.sidebar ul a{
+.sidebar ul a {
     display: block;
     height: 100%;
     width: 100%;
     line-height: 65px;
-    color: #FAF7F0;
+    color: #faf7f0;
     font-size: 24px;
     padding-left: 20px;
     box-sizing: border-box;
-    transition: .3s;
+    transition: 0.3s;
     flex-wrap: wrap;
 }
 
@@ -69,60 +68,58 @@
     padding-right: 20px;
 }
 
-.sidebar li a{
+.sidebar li a {
     align-items: center;
     display: flex;
     /* justify-content: center; */
 }
 
-
-.sidebar ul{
+.sidebar ul {
     height: 20%;
-    
 }
 
-.sidebar ul li:hover{
+.sidebar ul li:hover {
     background-color: rgba(250, 247, 240, 30%);
-    transition: .3s;
+    transition: 0.3s;
 }
 
-.logOut{
-    display: block; 
-    width: 100%; 
+.logOut {
+    display: block;
+    width: 100%;
     box-sizing: border-box;
-    transition: .3s;
+    transition: 0.3s;
     margin-top: 90%;
-    height: 100%; 
+    height: 100%;
 }
 
-.logOut button{
+.logOut button {
     line-height: 65px;
     padding-left: 20px;
-    color: #FAF7F0;
+    color: #faf7f0;
     display: flex;
     align-items: center;
-    background-color: #5571FE;
+    background-color: #5571fe;
     border: none;
     font-size: 24px;
     width: 100%;
     height: 100%;
 }
 
-.logOut button img{
+.logOut button img {
     height: 30px;
     width: 30px;
     padding-right: 20px;
 }
 
-.logOut button:hover{
+.logOut button:hover {
     background-color: rgba(250, 247, 240, 30%);
-    transition: .3s;
+    transition: 0.3s;
     cursor: pointer;
 }
 
 /* NavBar End */
-body{
-    background-color: #DADDEA;
+body {
+    background-color: #daddea;
 }
 
 /* Hero */
@@ -136,7 +133,34 @@ body{
     background-color: #daddea;
 }
 
+.Card {
+    margin: 2% 2% 0% 0%;
+    padding: 30px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 25px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
 
+.Card input {
+    padding: 5px 10px;
+    margin: 8px 0;
+    border: 1px solid;
+    border-radius: 0;
+    width: 25%;
+}
 
-
+.Card button {
+    padding: 5px 10px;
+    margin: 8px 0;
+    box-sizing: none;
+    background-color: #2e2e2e;
+    font-weight: bolder;
+    text-align: center;
+    color: #fefefe;
+    cursor: pointer;
+    border-style: none;
+}
 /* Hero End*/

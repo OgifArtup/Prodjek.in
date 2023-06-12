@@ -36,7 +36,7 @@
 
     <!-- Hero -->
     <div class="hero">
-      <h1>Good Morning, {{ auth()->user()->name }}!</h1>
+      <h1>Good Morning, {{ auth()->user()->username }}!</h1>
       <div class="container">
         <div class="card">
           <h3>Uncompleted Task</h3>
@@ -61,8 +61,10 @@
       <div class="notif-container">
         @foreach ($notifications as $notification)
         <div class="notif">
+          <div>
           <h1>{{ $notification->workspace->name }}</h1>
           <h2>{{ $notification->detail }}</h2>
+          </div>
           <div class="notif-img">
             <form action="{{route('deleteNotification', ['id' => $notification->id])}}" method="post">
               @csrf
@@ -84,18 +86,23 @@
       <div class="notif-container">
         @foreach ($invitations as $invitation)
         <div class="notif">
+          <div>
           <h1>{{ $invitation->workspace->name }}</h1>
           <h2>{{ $invitation->detail }}</h2>
-          <div class="notif-img"><img src="assets/close_logo.png" /></div>
+          </div>
+          
+          <div class="actionDiv">
           <form action="{{route('deleteNotification', ['id' => $invitation->id])}}" method="post">
             @csrf
             @method('delete')
-            <button action="/decline-invitation" type="submit" class="deleteBttn">Decline</button>
+            <button action="/decline-invitation" type="submit" class="deleteBtn">Decline</button>
           </form>
+
           <form action="{{route('acceptInvitation', ['id' => $invitation->id])}}" method="post">
             @csrf
-            <button action="/accept-invitation" type="submit" class="deleteBttn">Accept</button>
+            <button action="/accept-invitation" type="submit" class="AcceptBtn">Accept</button>
           </form>
+          </div>
         </div>
         @endforeach
         @if (count($notifications) == 0)

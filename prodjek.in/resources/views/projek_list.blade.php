@@ -33,7 +33,7 @@
       <!-- Hero -->
       <div class="mainContainer">
       <div>
-        <h1>Good Morning, {{ auth()->user()->name }}!</h1>
+        <h1>Good Morning, {{ auth()->user()->username }}!</h1>
       </div>
       <div class="container">
         @for ($i = 0; $i < count($projects); $i++)

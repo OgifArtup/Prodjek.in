@@ -36,21 +36,22 @@
     <div class ="MainContainer">
 
     <div>
-      <h1>Good Morning, {{ auth()->user()->name }}!</h1>
+      <h1>Good Morning, {{ auth()->user()->username }}!</h1>
     </div>
 
+    <div class="Card">
     <div>
+      <h1>Change Profile</h1>
+    </div>
         <form action="{{ route('updateProfile') }}" method="POST">
             @csrf
-            <label for="Username" class="form-label">Username</label>
-            <br/>
+            <label for="Username" class="form-label"><h2>Username</h2></label>
             <input name="Username" type="text" class="form-control" id="Username" value="{{ $profile->username }}">
-            <br/>
 
-            <label for="Email" class="form-label">Email</label>
-            <br/>
+            <label for="Email" class="form-label"><h2>Email</h2></label>
+            
             <input type="text" class="form-control" id="Email" readonly value="{{ $profile->email }}">
-            <br/>
+            <br>
 
             <button type="submit" class="insertBttn">Update Profile</button>
         </form>
@@ -59,11 +60,12 @@
     </div>
 
 
+    <div class="Card">
     <div>
+      <h1>Reset Password</h1>
+    </div>
         <form action="{{ route('updatePassword') }}" method="POST">
             @csrf
-            <label for="resetPassword" class="form-label">Reset Password</label>
-            <br/>
             <input name="lastPass" type="text" class="form-control" id="LastPass" placeholder="Last Password" >
             <br/>
             <input name="newPass" type="text" class="form-control" id="NewPass" placeholder="New Password" >

@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-*{
+* {
     margin: 0;
     padding: 0;
     font-family: "Poppins";
@@ -8,33 +8,33 @@
     text-decoration: none;
 }
 
-.all{
+.all {
     display: flex;
     flex-direction: row;
 }
 /* NavBar Laptop*/
 
-.sidebar{
-    display:flex;
-    position: fixed ;
+.sidebar {
+    display: flex;
+    position: fixed;
     /* position:fixed; */
     /* left: 0; */
     width: 20%;
     height: 100vh;
     padding: 0;
     margin: 0;
-    background: #5571FE;
+    background: #5571fe;
     flex-direction: column;
     /* align-items: center; */
 }
 
-.sidebar header{
+.sidebar header {
     display: flex;
     width: 100%;
     margin-top: 25px;
     margin-bottom: 75px;
     font-size: 32px;
-    color: #FAF7F0;
+    color: #faf7f0;
     justify-content: center;
     /* line-height: 70px; */
     user-select: none;
@@ -48,16 +48,16 @@
     width: 50px;
 }
 
-.sidebar ul a{
+.sidebar ul a {
     display: block;
     height: 100%;
     width: 100%;
     line-height: 65px;
-    color: #FAF7F0;
+    color: #faf7f0;
     font-size: 24px;
     padding-left: 20px;
     box-sizing: border-box;
-    transition: .3s;
+    transition: 0.3s;
     flex-wrap: wrap;
 }
 
@@ -67,60 +67,57 @@
     padding-right: 20px;
 }
 
-.sidebar li a{
+.sidebar li a {
     align-items: center;
     display: flex;
     /* justify-content: center; */
 }
 
-
-.sidebar ul{
+.sidebar ul {
     height: 20%;
-    
 }
 
-.sidebar ul li:hover{
+.sidebar ul li:hover {
     background-color: rgba(250, 247, 240, 30%);
-    transition: .3s;
+    transition: 0.3s;
 }
 
-.logOut{
-    display: block; 
-    width: 100%; 
+.logOut {
+    display: block;
+    width: 100%;
     box-sizing: border-box;
-    transition: .3s;
+    transition: 0.3s;
     margin-top: 90%;
-    height: 100%; 
+    height: 100%;
 }
 
-.logOut button{
+.logOut button {
     line-height: 65px;
     padding-left: 20px;
-    color: #FAF7F0;
+    color: #faf7f0;
     display: flex;
     align-items: center;
-    background-color: #5571FE;
+    background-color: #5571fe;
     border: none;
     font-size: 24px;
     width: 100%;
     height: 100%;
 }
 
-.logOut button img{
+.logOut button img {
     height: 30px;
     width: 30px;
     padding-right: 20px;
 }
 
-.logOut button:hover{
+.logOut button:hover {
     background-color: rgba(250, 247, 240, 30%);
-    transition: .3s;
+    transition: 0.3s;
     cursor: pointer;
 }
 
-
-body{
-    background-color: #DADDEA;
+body {
+    background-color: #daddea;
 }
 
 /* Navbar End */
@@ -134,7 +131,7 @@ body{
     background-color: #daddea;
 }
 
-.Message{
+.Message {
     margin: 2%;
 }
 
@@ -177,16 +174,16 @@ body{
     background-color: white;
 }
 
-.searchBar{
+.searchBar {
     display: flex;
     flex-direction: row;
 }
 
-.searchbar form{
+.searchbar form {
     display: flex;
 }
 
-.searchbar form input{
+.searchbar form input {
     /* width: 100%; */
     padding: 5px 10px;
     margin: 8px 0;
@@ -194,15 +191,14 @@ body{
     border-radius: 0;
 }
 
-.searchbar form button{
-
+.searchbar form button {
     padding: 5px 10px;
     margin: 8px 0;
     box-sizing: none;
-    background-color: #2E2E2E;
+    background-color: #2e2e2e;
     font-weight: bolder;
     text-align: center;
-    color: #FEFEFE;
+    color: #fefefe;
     cursor: pointer;
     border-style: none;
 }
@@ -212,98 +208,120 @@ body{
 /* pop up form */
 
 .overlay {
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background: rgba(0, 0, 0, 0.8);
-	visibility: hidden;
-	opacity: 0;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    visibility: hidden;
+    opacity: 0;
 }
 .overlay:target {
-	visibility: visible;
-	opacity: 1;
+    visibility: visible;
+    opacity: 1;
 }
 .wrapper {
-	margin: 70px auto;
-	padding: 20px;
-	background: white;
-	border-radius: 5px;
-	width: 30%;
-	position: relative;
+    margin: 70px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+    width: 30%;
+    position: relative;
 }
 .wrapper h2 {
-	margin-top: 0;
-	color: #333;
+    margin-top: 0;
+    color: #333;
 }
 .wrapper .close {
-	position: absolute;
-	top: 20px;
-	right: 30px;
-	transition: all 200ms;
-	font-size: 30px;
-	font-weight: bold;
-	text-decoration: none;
-	color: #333;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
 }
 .wrapper .close:hover {
-	color: #06D85F;
+    color: #06d85f;
 }
 .wrapper .content {
-	max-height: 30%;
-	overflow: auto;
+    max-height: 30%;
+    overflow: auto;
 }
 /*form*/
 
 .container {
-	border-radius: 5px;
-	background-color: white;
-	padding: 20px 0;
+    border-radius: 5px;
+    background-color: white;
+    padding: 20px 0;
 }
 form label {
-	font-weight: 500;
+    font-weight: 500;
     font-family: "Poppins";
     font-weight: bolder;
 }
-input[type=text], textarea {
-	width: 100%;
-	padding: 12px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	box-sizing: border-box;
-	margin-top: 6px;
-	margin-bottom: 16px;
-	resize: vertical;
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
 }
 
-.buttons{
+.buttons {
     display: flex;
     width: 50%;
 }
 
-.buttons a{
-    background-color: #F8BCBC;
-	color: #1C33AA;
+.buttons a {
+    background-color: #f8bcbc;
+    color: #1c33aa;
     padding: 10px 15px;
-	border: none;
-	border-radius: 10px;
-	cursor: pointer;
-	font-size: 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
     margin-right: 4%;
 }
 
 .buttona[type="submit"] {
-    background-color: #BCF8CD;
-	color: #1C33AA;
-	padding: 10px 15px;
-	border: none;
-	border-radius: 10px;
-	cursor: pointer;
-	font-size: 15px;
+    background-color: #bcf8cd;
+    color: #1c33aa;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
 }
 
-.fields{
+.redbutton-re_assign {
+    background-color: #f8bcbc;
+    color: #1c33aa;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    margin-right: 4%;
+}
+
+.buttona-re_assign[type="submit"] {
+    background-color: #bcf8cd;
+    color: #1c33aa;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.fields {
     margin: 3%;
 }
 
@@ -314,12 +332,13 @@ input[type=text], textarea {
 .task-container {
     width: 100%;
     text-align: left;
-    margin-bottom: 2%;
+    margin-top: 1%;
+    margin-bottom: 1%;
     padding-top: 1%;
     padding-bottom: 1%;
 }
 
-.header{
+.header {
     display: flex;
     justify-content: space-between;
     /* padding-top: 1%; */
@@ -333,35 +352,13 @@ input[type=text], textarea {
     /* margin-left: 0; */
     font-weight: bold;
     font-size: 24px;
-    
 }
 
-.header p {
-    border-radius: 6px;
-    background-color: #BCCEF8;
-    color: #1C33AA;
-    font-weight: bold;
-    font-size: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    width: 20%;
-    text-align: center;
-}
-
-.body {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 1%;
-    padding-left: 2%;
-    padding-right: 2%;
-    align-items: center;
-}
-
-.body form{
+.header form {
     width: 20%;
 }
 
-.body button{
+.header button {
     display: flex;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -373,15 +370,59 @@ input[type=text], textarea {
     text-align: center;
     justify-content: center;
     border-radius: 6px;
-    background-color: #BCF8CD;
-    color: #1C33AA;
+    background-color: #bccef8;
+    color: #1c33aa;
     cursor: pointer;
     border-style: none;
 }
 
+.re-assign {
+    font-weight: bold;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    border-radius: 6px;
+    background-color: #bcf8cd;
+    color: #1c33aa;
+    cursor: pointer;
+    border-style: none;
+}
 
+.body {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    align-items: center;
+}
 
-.body p{
+.body form {
+    width: 20%;
+}
+
+.body button {
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    border-radius: 6px;
+    background-color: #bcf8cd;
+    color: #1c33aa;
+    cursor: pointer;
+    border-style: none;
+}
+
+.body p {
     font-weight: medium;
     font-size: 24px;
 }
@@ -395,16 +436,16 @@ input[type=text], textarea {
     align-items: center;
 }
 
-.footer h2{
+.footer h2 {
     /* font-weight: medium; */
     font-size: 18px;
 }
 
-.footer form{
+.footer form {
     width: 20%;
 }
 
-.footer button{
+.footer button {
     padding-top: 10px;
     padding-bottom: 10px;
     font-weight: bold;
@@ -414,8 +455,8 @@ input[type=text], textarea {
     width: 100%;
     text-align: center;
     border-radius: 6px;
-    background-color: #F8BCBC;
-    color: #1C33AA;
+    background-color: #f8bcbc;
+    color: #1c33aa;
     cursor: pointer;
     border-style: none;
 }
@@ -428,7 +469,7 @@ input[type=text], textarea {
     cursor: pointer;
 }
 
-.button img{
+.button img {
     float: right;
     width: 80px;
     height: 80px;
