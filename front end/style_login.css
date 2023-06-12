@@ -98,7 +98,8 @@ nav img{
 }
 
 .form{
-    margin-top: 25%;
+    /* margin-top: 25%; */
+    
 }
 
 .input-field{
@@ -134,11 +135,57 @@ color :#1c33aa;
     text-align : center;
 }
 
+.login_3rd_party small{
+    height: 45px;
+    width: 40%;
+    background: transparent;
+    
+    border: 1px solid;
+    font-family: "Poppins";
+    
+    border-radius: 10px;
+    align-items: center;
+    
+}
+
+
+.logo{
+    display: inline-block;
+    width: 100%;
+    align-items: center;
+    
+}
+
+.input-button{
+    width: 40px;
+    height: 40px;
+}
+
+.input-button img{
+    width: 40px;
+    height: 40px;
+    
+}
+
+.input-text{
+    width: 50%;
+    
+}
+
+
+.login-button{
+    display: inline-flex;
+    width: 100%;
+    
+    
+    
+}
+
 .login_3rd_party{
     height: 45px;
     width: 100%;
     background: transparent;
-    border: none;
+    align-items: center;
     border: 1px solid;
     font-family: "Poppins";
     margin-bottom: 20px;
@@ -146,7 +193,31 @@ color :#1c33aa;
 }
 
 .submit-google{
-    width : 100%;
+    width : 50%;
+    border: none;
+    outline: none;
+    height: 45px;
+    background: transparent;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: "Poppins";
+    font-weight: 400;
+}
+
+.submit-apple{
+    width : 50%;
+    border: none;
+    outline: none;
+    height: 45px;
+    background: transparent;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: "Poppins";
+    font-weight: 400;
+}
+
+.submit-facebook{
+    width : 50%;
     border: none;
     outline: none;
     height: 45px;

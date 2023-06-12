@@ -2,87 +2,146 @@
 
 *{
     margin: 0;
-    font-family: "Poppins";
-}
-
-ul {
-    list-style-type: none;
-    margin: 0;
     padding: 0;
-    width: 16%;
-    background-color: #5571FE;
-    position: fixed;
+    font-family: "Poppins";
+    list-style: none;
+    text-decoration: none;
+}
+
+.all{
+    display: flex;
+    flex-direction: row;
+}
+/* NavBar Laptop*/
+
+.sidebar{
+    display:flex;
+    position: fixed ;
+    /* position:fixed; */
+    /* left: 0; */
+    width: 20%;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    background: #5571FE;
+    flex-direction: column;
+    /* align-items: center; */
+}
+
+.sidebar header{
+    display: flex;
+    width: 100%;
+    margin-top: 25px;
+    margin-bottom: 75px;
+    font-size: 32px;
+    color: #FAF7F0;
+    justify-content: center;
+    /* line-height: 70px; */
+    user-select: none;
+    align-items: center;
+    display: flex;
+}
+.sidebar header img {
+    /* padding-left: 15px; */
+    padding-right: 20px;
+    height: 50px;
+    width: 50px;
+}
+
+.sidebar ul a{
+    display: block;
     height: 100%;
-    overflow: auto;
-    float: left;
+    width: 100%;
+    line-height: 65px;
+    color: #FAF7F0;
+    font-size: 24px;
+    padding-left: 20px;
+    box-sizing: border-box;
+    transition: .3s;
+    flex-wrap: wrap;
 }
 
-li h1 {
-    font-size: 30px;
-    color: white;
-    padding-top: 30px;
-    padding-bottom: 30px;
-}
-
-li h1 img {
-    padding-left: 10px;
-    padding-right: 10px;
+.sidebar li img {
     height: 30px;
     width: 30px;
+    padding-right: 20px;
 }
 
-li img {
-    height: 25px;
-    width: 25px;
-    padding-right: 10px;
+.sidebar li a{
+    align-items: center;
+    display: flex;
+    /* justify-content: center; */
 }
 
-li a {
-    display: block;
-    color: white;
-    padding: 8px 16px;
-    text-decoration: none;
-    font-size: 25px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-  
-li a.active {
-    background-color: #8699fa;
-    color: white;
-}
-  
-li a:hover:not(.active) {
-    background-color: #8699fa;
+
+.sidebar ul{
+    height: 20%;
+    
 }
 
-li b{
-    display: block;
-    color: white;
-    padding: 8px 16px;
-    text-decoration: none;
-    font-size: 25px;
-    margin-top: 350px;
-    margin-bottom: 15px;
-    font-weight: normal;
+.sidebar ul li:hover{
+    background-color: rgba(250, 247, 240, 30%);
+    transition: .3s;
 }
 
-div {
-    width: 89%;
-    float: right;
+.logOut{
+    display: block; 
+    width: 100%; 
+    box-sizing: border-box;
+    transition: .3s;
+    margin-top: 90%;
+    height: 100%; 
+}
+
+.logOut button{
+    line-height: 65px;
+    padding-left: 20px;
+    color: #FAF7F0;
+    display: flex;
+    align-items: center;
+    background-color: #5571FE;
+    border: none;
+    font-size: 24px;
+    width: 100%;
+    height: 100%;
+}
+
+.logOut button img{
+    height: 30px;
+    width: 30px;
+    padding-right: 20px;
+}
+
+.logOut button:hover{
+    background-color: rgba(250, 247, 240, 30%);
+    transition: .3s;
+    cursor: pointer;
+}
+
+
+body{
+    background-color: #DADDEA;
+}
+
+/* Navbar End */
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-left: 20%;
+    /* float: right; */
     background-color: #daddea;
 }
 
-div h1 {
-    margin-left: 5%;
-    padding: 2%;
-    font: 36px;
-    margin-bottom: 1%;
-    background-color: #daddea;
-}
-
-.prodjek-page {
+.Message{
     margin: 2%;
+}
+
+/* Project Detail */
+.Card {
+    margin: 0% 2% 2% 2%;
+    padding: 30px;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 25px;
@@ -91,18 +150,16 @@ div h1 {
     align-content: center;
 }
 
-.prodjek-page h1 {
+.Card h1 {
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
-    align-items: center;
-    background-color: white;
-    border-radius: 25px;
     text-align: center;
-    margin-right: 5%;
+    padding-bottom: 10px;
 }
 
 .details {
+    padding-top: 10px;
     margin-right: 5%;
     background-color: white;
 }
@@ -120,80 +177,289 @@ div h1 {
     background-color: white;
 }
 
-.task-container {
-    margin-right: 11%;
-    background-color: white;
-    border: 3px solid black;
-    border-radius: 25px;
-    text-align: left;
-    padding: 3px;
-    margin-bottom: 2%;
+.searchBar{
+    display: flex;
+    flex-direction: row;
 }
 
-.task-container p {
-    text-align: left;
-    margin-left: 0;
-    padding: 2%;
-    margin: 1%;
-    margin-bottom: 2%;
+.searchbar form{
+    display: flex;
 }
 
-.task-container h2 {
-    text-align: left;
-    margin-left: 0;
-    font-weight: bold;
-    padding: 2%;
+.searchbar form input{
+    /* width: 100%; */
+    padding: 5px 10px;
+    margin: 8px 0;
+    border: 1px solid;
+    border-radius: 0;
 }
 
-.task-container a {
+.searchbar form button{
+
+    padding: 5px 10px;
+    margin: 8px 0;
+    box-sizing: none;
+    background-color: #2E2E2E;
+    font-weight: bolder;
     text-align: center;
-    float: right;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-left: 5%;
-    padding-right: 5%;
-    color: #1C33AA;
-    background-color: #BCCEF8;
-    border-radius: 5px;
-    font-weight: normal;
-    width: 150px;
-    height: 43px;
+    color: #FEFEFE;
+    cursor: pointer;
+    border-style: none;
 }
 
-.task-container b {
-    text-align: center;
-    font-size: 24px;
-    float: right;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-left: 4%;
-    padding-right: 5%;
-    color: #1C33AA;
-    background-color: #BCF8CD;
-    border-radius: 5px;
-    font-weight: normal;
-    width: 150px;
-    height: 43px;
+/* Project Detail END*/
+
+/* pop up form */
+
+.overlay {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.8);
+	visibility: hidden;
+	opacity: 0;
+}
+.overlay:target {
+	visibility: visible;
+	opacity: 1;
+}
+.wrapper {
+	margin: 70px auto;
+	padding: 20px;
+	background: white;
+	border-radius: 5px;
+	width: 30%;
+	position: relative;
+}
+.wrapper h2 {
+	margin-top: 0;
+	color: #333;
+}
+.wrapper .close {
+	position: absolute;
+	top: 20px;
+	right: 30px;
+	transition: all 200ms;
+	font-size: 30px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #333;
+}
+.wrapper .close:hover {
+	color: #06D85F;
+}
+.wrapper .content {
+	max-height: 30%;
+	overflow: auto;
+}
+/*form*/
+
+.container {
+	border-radius: 5px;
+	background-color: white;
+	padding: 20px 0;
+}
+form label {
+	font-weight: 500;
+    font-family: "Poppins";
+    font-weight: bolder;
+}
+input[type=text], textarea {
+	width: 100%;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin-top: 6px;
+	margin-bottom: 16px;
+	resize: vertical;
 }
 
-.task-container c {
-    text-align: center;
-    float: right;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-left: 5%;
-    padding-right: 5%;
-    color: #1C33AA;
+.buttons{
+    display: flex;
+    width: 50%;
+}
+
+.buttons a{
     background-color: #F8BCBC;
-    border-radius: 5px;
-    font-weight: normal;
-    width: 150px;
-    height: 43px;
+	color: #1C33AA;
+    padding: 10px 15px;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	font-size: 15px;
+    margin-right: 4%;
+}
+
+.buttona[type="submit"] {
+    background-color: #BCF8CD;
+	color: #1C33AA;
+	padding: 10px 15px;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	font-size: 15px;
+}
+
+.redbutton-re_assign{
+    background-color: #F8BCBC;
+	color: #1C33AA;
+    padding: 10px 15px;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	font-size: 15px;
+    margin-right: 4%;
+}
+
+.buttona-re_assign[type="submit"] {
+    background-color: #BCF8CD;
+	color: #1C33AA;
+	padding: 10px 15px;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	font-size: 15px;
+}
+
+
+.fields{
+    margin: 3%;
+}
+
+/* pop up form end */
+
+/* Project Task */
+
+.task-container {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 2%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    /* padding-top: 1%; */
+    padding-left: 2%;
+    padding-right: 2%;
+    align-items: center;
+}
+
+.header h2 {
+    /* text-align: left; */
+    /* margin-left: 0; */
+    font-weight: bold;
+    font-size: 24px;
+    
+}
+
+
+
+
+.re-assign{
+    
+    border-radius: 6px;
+    background-color: #BCCEF8;
+    color: #1C33AA;
+    font-weight: bold;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 75px;
+    padding-right: 75px;
+    width: 100%;
+    text-align: center;
+    border-style: none;
+    display: flex;
+    justify-content: center;
+
+}
+
+
+
+.body {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    align-items: center;
+}
+
+.body form{
+    width: 20%;
+}
+
+.body button{
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    border-radius: 6px;
+    background-color: #BCF8CD;
+    color: #1C33AA;
+    cursor: pointer;
+    border-style: none;
+}
+
+
+
+.body p{
+    font-weight: medium;
+    font-size: 24px;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    align-items: center;
+}
+
+.footer h2{
+    /* font-weight: medium; */
+    font-size: 18px;
+}
+
+.footer form{
+    width: 20%;
+}
+
+.footer button{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    text-align: center;
+    border-radius: 6px;
+    background-color: #F8BCBC;
+    color: #1C33AA;
+    cursor: pointer;
+    border-style: none;
 }
 
 .button {
-    background-color: white;
-    padding-bottom: 1%;
+    background-color: none;
+    position: fixed;
+    bottom: 3%;
+    right: 3%;
+    cursor: pointer;
 }
 
 .button img{
@@ -201,3 +467,5 @@ div h1 {
     width: 80px;
     height: 80px;
 }
+
+/* Project Task END*/

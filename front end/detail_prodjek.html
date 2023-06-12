@@ -9,60 +9,291 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <title>Home Page</title>
-    <link rel="stylesheet" href="style_detail_prodjek.css" />
+    <link href="style_detail_prodjek.css" rel="stylesheet" type="text/css" >
   </head>
   <body>
-    <ul>
-      <li>
-        <h1><img src="assets/logo_white.png" />Prodjek.in</h1>
-      </li>
-      <li>
-        <a class="active" href="#dashboard"
-          ><img src="assets/dashboard_logo.png" /> Dashboard</a
-        >
-      </li>
-      <li>
-        <a href="#profile"><img src="assets/profile_logo.png" /> Profile</a>
-      </li>
-      <li>
-        <a href="#prodjek"><img src="assets/prodjek_logo.png" /> Prodjek</a>
-      </li>
-      <li>
-        <b><img src="assets/logout_logo.png" /> Log Out</b>
-      </li>
-    </ul>
+    <!-- NavBar -->
+<div class ="all">
+    <div class="sidebar">
+      <header><img src="/assets/logo_white.png" /><b>Prodjek.In</b></header>
+        <ul class="list1">
+          <li><a href="/home"><img src="/assets/dashboard_logo.png" />Dashboard</a></li>
+          <li><a href="/view-profile"><img src="/assets/profile_logo.png" />Profile</a></li>
+          <li><a href="/project-list"><img src="/assets/prodjek_logo.png" />Prodjek</a></li>
+          <li><form action="/logout" method="POST" class="logOut">
+            @csrf
+            <button type="submit" class="dropdown-item">
+            <img src="/assets/logout_logo.png" />Logout
+            </button>
+        </form></li>
+        </ul>
+    </div>
 
-    <div>
-      <h1>Good Morning, Username!</h1>
 
-      <div class="prodjek-page">
-        <h1>Project Title</h1>
+    <!-- NavBar End -->
+
+    <!-- Hero -->
+    <div class="mainContainer">
+      <div class="Message">
+        <h1>Good Morning, {{ auth()->user()->name }}!</h1>
+      </div>
+
+
+      <div class="Card">
+        <h1>{{ $workspace->name }}</h1>
+        <hr>
         <div class="details">
+          <h2>Members</h2>
+          <p>
+            @foreach ($members as $member)
+              | {{ $member->user->name }} |
+            @endforeach
+          </p>
+          <br />
           <h2>Team</h2>
-          <p>Pandawa Group</p>
+          <p>{{ $workspace->team_name }}</p>
           <br />
           <h2>Role</h2>
-          <p>Manager</p>
+          <p>{{ $workspace_list->role }}</p>
           <br />
           <h2>Detail</h2>
-          <p>Comprov Prodject.in</p>
-          <br />
+          <p>{{ $workspace->project_detail }}</p>
+          <br/>
+          <h2>Invite Member</h2>
+
+          <div class="searchbar">
+          <form action="{{ route('inviteMember', ['id' => $workspace->id]) }}" method="POST" enctype="multipart/form-data" class="">
+            @csrf
+            <input name="email" type="text" class="" placeholder="Add User's Email">
+            <button type="submit">Add</button>
+          </form>
+          
+              <div class="">
+                {{ session('message') }}
+              </div>
+          
+    </div>
         </div>
-        <div class="actions">
+        </div>
+
+        <div class="Card">
+        <h1>Tasks</h1>
+        <br>
+        
           <div class="task-container">
-            <h2>Make Back-End Auth<a>Re-Assign</a></h2>
-            <p>User request login auth from google lorem ipsum<b>Check</b></p>
-            <h2>Status: Assigned to "Developer 1"<c>Delete</c></h2>
+            <div class="header">
+            <h2>name</h2>
+            
+            <form action="re-assign" method="post">
+              
+              <button type="submit" class="re-assign"><a href="#divTwo">Re-Assign</a></button>
+            </form>
+            </div>
+
+            <div class="body">
+            <p>description</p>
+            
+            <form action="{{route('checkTask', ['id' => $tasks[$i]->id])}}" method="post">
+              
+              <button type="submit">Check</button>
+            </form>
+            
+            <form action="{{route('uncheckTask', ['id' => $tasks[$i]->id])}}" method="post">
+              
+              <button type="submit" >Uncheck</button>
+            </form>
+            
+            </div>
+
+            <div class="footer">
+            <p>Deadline : <b></b></p>
+            <p>Priority :<b></b></p>
+            <p>Status:<b></b></p>
+            <p>Assigned to :
+            
+            <b></b>
+            
+            </p>
+            <form action="{{route('deleteTask', ['id' => $tasks[$i]->id])}}" method="post">
+              
+              <button type="submit">Delete</button>
+            </form>
+
+            </div>
           </div>
+
+
           <div class="task-container">
-            <h2>Make Back-End Auth<a>Assign</a></h2>
-            <p>User request login auth from google lorem ipsum<b>Check</b></p>
-            <h2>Status: Assigned to "Developer 1"<c>Delete</c></h2>
+            <h2> Assigned Members :</h2>
+            <h2>
+              
+                <form action="{{route('deleteAssignedMember')}}" method="POST">
+                  
+                  <input type="hidden" name="user_id" value="{{ $assignedMember[$i][$j]->id }}">
+                  <input type="hidden" name="task_id" value="{{ $tasks[$i]->id }}">
+                  <c><button type="submit" class="">Delete</button></c>
+                </form>
+              
+            </h2>
+            
+            <h2>Assign Other Members</h2>
+            <form action="{{ route('addAssignedMembers', ['id' => $tasks[$i]->id]) }}" method="POST">
+              
+              <div class="">
+                
+                  <label><input type="checkbox" name=assign[] value='{{$nonAssignedMember[$i][$j]->id}}'>name</label>
+                
+              </div>
+              <div class="">
+                <button type="submit" class="">Assign Members</button>
+              </div>
+            </form>
+            
+
+            
           </div>
+          
+        </div>
+
+          <!-- Add Task & pop up form -->
+
           <div class="button">
-            <a><img src="assets/add_logo.png" /></a>
+            <a href="#divOne"><img src="/assets/add_logo.png" /></a>
           </div>
+
+          <div class="overlay" id="divOne">
+            <div class="wrapper">
+              <div class="content">
+                <div class="container">
+                    <div class="actions">
+                      <div class="task-container">
+                        <form action="{{ route('createTask', ['id' => $workspace->id]) }}" method="POST" enctype="multipart/form-data" class="">
+                          
+                          <div class="fields">
+                              <label>Task Name</label>
+                              <input name="name" type="text" class="" value="name">
+                              
+                                  <div class="">
+                                      {{ $message }}
+                                  </div>
+                              
+                          </div>
+                          <div class="fields">
+                              <label>Task Description</label>
+                              <input name="description" type="text" class="" value="description">
+                              
+                                  <div class="">
+                                      {{ $message }}
+                                  </div>
+                              
+                          </div>
+                          <div class="fields">
+                              <label for="due_date">Due Date</label>
+                              <input name="due_date" type="date" class="" value="due_date">
+                              
+                                  <div class="">
+                                      {{ $message }}
+                                  </div>
+                              
+                          </div>
+                          <div class="fields">
+                            <label>Task Priority</label>
+                            <select name="priority" value="{{ old('priority') }}">
+                              <option value="Important">Important</option>
+                              <option value="Urgent">Urgent</option>
+                              <option value="Normal">Normal</option>
+                              <option value="Low">Low</option>
+                            </select>
+                            
+                                <div class="">
+                                    {{ $message }}
+                                </div>
+                            
+                          </div>
+                          <div class="fields">
+                            <label for="assign[]">Assign To</label><br>
+                            
+                              <label><input type="checkbox" name=assign[] value='{{$member->user->id}}'>{{$member->user->name}}</label>
+                            
+                                <div class="">
+                                    {{ $message }}
+                                </div>
+                            
+                          </div>
+                          <div class="buttons">
+                            <a class="redbutton" onclick="history.back()">Cancel</a>
+                            <button type="submit" class="buttona">Add Task</button>
+                          </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+	        </div>
+
+
+
+
+          <div class="overlay" id="divTwo">
+            <div class="wrapper">
+              <div class="content">
+                <div class="container">
+                    <div class="actions">
+                      <div class="task-container">
+                        <form action="re-assign" method="POST" enctype="multipart/form-data" class="">
+                          
+                          <div class="fields">
+                              <label>Task Focus</label>
+                              <input name="name" type="text" class="" value="{{ old('name') }}">
+                              
+                                  <div class="">
+                                      
+                                  </div>
+                              
+                          </div>
+                          <div class="fields">
+                              <label>Task Description (Notes)</label>
+                              <input name="description" type="text" class="" value="{{ old('description') }}">
+                              
+                                  <div class="">
+                                      
+                                  </div>
+                              
+                          </div>
+                          
+                          <div class="fields">
+                            <label>Assign to</label>
+                            <br>
+                            <select name="priority" value="{{ old('priority') }}">
+                              <option value="Team 1">Team 1</option>
+                              <option value="Team 2">Team 2</option>
+                              <option value="Team 3">Team 3</option>
+                              <option value="Team 4">Team 4</option>
+                            </select>
+                            
+                                <div class="">
+                                    
+                                </div>
+                            
+                          </div>
+                          
+                          <div class="buttons">
+                            <a class="redbutton-re_assign" onclick="history.back()">Cancel</a>
+                            <button type="submit" class="buttona-re_assign">Add Task</button>
+                          </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
+      </div>
       </div>
     </div>
   </body>

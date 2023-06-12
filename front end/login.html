@@ -34,35 +34,80 @@
         </div>
         <div class="loginform">
           <h1>Welcome</h1>
-          <div class="form">
-            <div class="login_3rd_party">
+          <div class="login-button">
+            <div class="login_3rd_party small">
               <form action="home.html">
-                <input
-                  type="submit"
-                  class="submit-google"
-                  value="Login with Google"
-                />
+                <div class="logo">
+                  <span class="input-button"><img src="google.png" alt=""></span>
+                  <span class="input-text">
+                    <input
+                    type="submit"
+                    class="submit-google"
+                    value= "Login with Google"
+                    />
+                  </span>
+                </div>
               </form>
             </div>
-            <br />
-            <p>- OR -</p>
-            <br />
+
+            <div class="login_3rd_party small">
+              <form action="home.html">
+                <div class="logo">
+                  <span class="input-button"><img src="apple.png" alt=""></span>
+                  <span class="input-text">      
+                    <input
+                      type="submit"
+                      class="submit-apple"
+                      value="Login with Apple"
+                     />
+                    </span>
+                </div>
+              </form>
+              </div>
+            </div>
+          <div class="login_3rd_party">
             <form action="home.html">
+              <div class="logo">
+                <span class="input-button"><img src="facebook.png" alt=""></span>
+                  <span class="input-text">
+                    <input
+                    type="submit"
+                    class="submit-facebook"
+                    value="Login with Facebook"
+                    />
+                  </span>
+              </div>
+            </form>
+          </div>
+          <div class="form">
+              
+            <br>
+            <p>- OR -</p>
+            <br>
+            <form action="" method="POST" enctype="multipart/form-data">
               <div class="input-field">
                 <input
+                  name="email"
                   type="text"
                   class="input"
                   id="email"
                   placeholder="Email"
                 />
+                    <div class="text-danger">
+                        error message
+                    </div>
               </div>
               <div class="input-field">
                 <input
+                  name="password"
                   type="password"
                   class="input"
                   id="email"
                   placeholder="Password"
                 />
+                    <div class="text-danger">
+                        error message
+                    </div>
               </div>
               <br />
               <div class="input-field">
